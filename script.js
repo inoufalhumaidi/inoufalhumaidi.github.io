@@ -107,6 +107,40 @@ if (navSections.length) {
   }, { passive: true });
 }
 
+// Decrypt-style scramble on the nav bar: letters settle left to right out of
+// random glyphs on hover/focus, instead of the label just appearing
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const SCRAMBLE_GLYPHS = '!<>-_\\/[]{}=+*^?#%$&01';
+  const scrambleIn = (el) => {
+    const target = el.dataset.text || (el.dataset.text = el.textContent);
+    clearInterval(el._scrambleTimer);
+    const totalFrames = 14;
+    let frame = 0;
+    el._scrambleTimer = setInterval(() => {
+      frame++;
+      let out = '';
+      for (let i = 0; i < target.length; i++) {
+        const ch = target[i];
+        if (ch === ' ') { out += ' '; continue; }
+        const settleAt = Math.floor((i / target.length) * totalFrames * 0.75);
+        out += frame > settleAt ? ch : SCRAMBLE_GLYPHS[(Math.random() * SCRAMBLE_GLYPHS.length) | 0];
+      }
+      el.textContent = out;
+      if (frame >= totalFrames) { clearInterval(el._scrambleTimer); el.textContent = target; }
+    }, 32);
+  };
+  const scrambleOut = (el) => {
+    clearInterval(el._scrambleTimer);
+    if (el.dataset.text) el.textContent = el.dataset.text;
+  };
+  document.querySelectorAll('.topnav a').forEach((a) => {
+    a.addEventListener('mouseenter', () => scrambleIn(a));
+    a.addEventListener('mouseleave', () => scrambleOut(a));
+    a.addEventListener('focus', () => scrambleIn(a));
+    a.addEventListener('blur', () => scrambleOut(a));
+  });
+}
+
 // Reveal on scroll
 const revealEls = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
