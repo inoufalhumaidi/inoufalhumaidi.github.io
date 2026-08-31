@@ -10,6 +10,7 @@
   --faint: #b39fc7;
   --accent: #f2a6c1;
   --accent-2: #a6d8d0;
+  --accent-2-deep: #4f9c8c; /* same shade as the hero eyebrow, for text that reads too pale in the light --accent-2 */
   --accent-3: #b9c6f2;
   --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   --display: 'Chivo', 'Inter', system-ui, sans-serif;
@@ -137,7 +138,7 @@ a { color: inherit; text-decoration: none; }
 
 /* hero copy */
 .hero-copy { padding-top: 26px; }
-.eyebrow { font-size: 11px; letter-spacing: .1em; color: #4f9c8c; margin: 0 0 18px; text-transform: uppercase; }
+.eyebrow { font-size: 11px; letter-spacing: .1em; color: var(--accent-2-deep); margin: 0 0 18px; text-transform: uppercase; }
 /* staggered hero entrance: card settles first, then copy cascades line by line */
 .eyebrow.reveal { transition-delay: .08s; }
 .hero h1.reveal { transition-delay: .16s; }
@@ -165,7 +166,7 @@ a { color: inherit; text-decoration: none; }
 @keyframes mq-scroll { 100% { transform: translateX(-50%); } }
 
 .mq-label { font-weight: 700; letter-spacing: .1em; color: var(--accent); }
-.mq-label.accent2 { color: var(--accent-2); }
+.mq-label.accent2 { color: var(--accent-2-deep); }
 .mq-sep { color: var(--faint); }
 .mq-skill {
   font: inherit; font-family: var(--mono); background: none; border: 0; padding: 0; cursor: pointer;
@@ -232,9 +233,9 @@ a { color: inherit; text-decoration: none; }
 .row-body .idx { display: block; color: var(--faint); font-size: 12px; margin-bottom: 10px; }
 .row-body h3 { font-family: var(--display); font-weight: 700; font-size: clamp(1.05rem, 1.8vw, 1.3rem); letter-spacing: -.01em; margin: 0 0 10px; transition: color .2s; }
 .row:hover .row-body h3, .row[aria-expanded="true"] .row-body h3 { color: var(--accent); }
-.row-body .row-stat { display: block; font-size: 11.5px; letter-spacing: .02em; line-height: 1.5; color: var(--accent-2); margin-bottom: 8px; }
+.row-body .row-stat { display: block; font-size: 11.5px; letter-spacing: .02em; line-height: 1.5; color: var(--accent-2-deep); margin-bottom: 8px; }
 .row-body .tags { font-size: 10.5px; letter-spacing: .06em; color: var(--muted); display: block; }
-.row-body .tags b.t { color: var(--accent-2); font-weight: 600; }
+.row-body .tags b.t { color: var(--accent-2-deep); font-weight: 600; }
 .row-body .tags .t + .t::before { content: " · "; color: var(--faint); }
 .row .go {
   justify-self: end; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
@@ -300,7 +301,7 @@ a { color: inherit; text-decoration: none; }
 }
 .pc-full:hover { color: var(--accent); }
 .panel-body { padding: 22px 22px 18px; }
-.panel-kicker { font-size: 10px; letter-spacing: .08em; color: var(--accent-2); margin: 0 0 6px; }
+.panel-kicker { font-size: 10px; letter-spacing: .08em; color: var(--accent-2-deep); margin: 0 0 6px; }
 .panel-body h3 { font-family: var(--display); font-size: 1.15rem; margin: 0 0 6px; }
 .panel-sub { color: var(--muted); font-size: .9rem; margin: 0 0 18px; }
 .panel-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px; }
@@ -329,7 +330,7 @@ a { color: inherit; text-decoration: none; }
 }
 .cred-thumb span { font-size: 10px; letter-spacing: .1em; color: var(--ink); opacity: .6; }
 .cred-thumb p { margin: 0; font-family: var(--display); font-weight: 700; color: var(--ink); font-size: .95rem; }
-.cred-meta { font-size: 10px; letter-spacing: .06em; color: var(--accent-2); margin: 0 0 6px; }
+.cred-meta { font-size: 10px; letter-spacing: .06em; color: var(--accent-2-deep); margin: 0 0 6px; }
 .cred-card h3 { font-size: 1rem; margin: 0 0 8px; }
 .cred-card p:last-of-type { color: var(--muted); font-size: .88rem; margin: 0 0 14px; }
 .cred-link { font-size: 11px; letter-spacing: .04em; color: var(--ink); border-bottom: 1px solid var(--line); transition: color .2s, border-color .2s; }
@@ -386,7 +387,7 @@ a { color: inherit; text-decoration: none; }
 .xr-when .bar::after { content: ""; position: absolute; inset: 0; width: 0%; background: var(--accent); transition: width 1s var(--ease); }
 .reveal.visible .xr-when .bar::after { width: var(--fill, 0%); }
 .xr-copy h3 { font-family: var(--display); font-size: 1.1rem; margin: 0 0 8px; }
-.xr-copy h3 em { font-style: normal; font-size: .7rem; color: var(--accent-2); letter-spacing: .04em; margin-left: 4px; }
+.xr-copy h3 em { font-style: normal; font-size: .7rem; color: var(--accent-2-deep); letter-spacing: .04em; margin-left: 4px; }
 .xr-copy p { color: var(--muted); margin: 0; max-width: 640px; }
 @media (max-width: 700px) { .xrow { grid-template-columns: 1fr; gap: 10px; } }
 
@@ -459,7 +460,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 12px; cursor: pointer; transition: color .15s;
 }
 .bubble-close:hover { color: var(--accent); }
-.bubble-kicker { font-size: 10px; letter-spacing: .12em; color: var(--accent-2); margin: 0 0 8px; padding-right: 20px; }
+.bubble-kicker { font-size: 10px; letter-spacing: .12em; color: var(--accent-2-deep); margin: 0 0 8px; padding-right: 20px; }
 /* match each group's colour in the marquee (pink for technical, teal for professional) */
 .bubble-kicker.technical { color: var(--accent); }
 .skill-bubble h4 { font-family: var(--display); font-size: 1.05rem; margin: 0 0 12px; padding-right: 20px; }
