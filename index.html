@@ -23,6 +23,7 @@
     <a href="#top" class="id mono">NOUF ALHUMAIDI <span>/ ANALYST</span></a>
     <nav class="mono topnav">
       <a href="#work">WORK</a>
+      <a href="#case-studies">CASE STUDIES</a>
       <a href="#credentials">CREDENTIALS</a>
       <a href="#experience">EXPERIENCE</a>
       <a href="#contact">CONTACT</a>
@@ -41,10 +42,11 @@
       <a href="#top" data-idx="00"><span class="mi">00</span>Home</a>
       <a href="#work" data-idx="01"><span class="mi">01</span>Selected work</a>
       <a href="#flagship" data-idx="02"><span class="mi">02</span>Flagship</a>
-      <a href="#credentials" data-idx="03"><span class="mi">03</span>Credentials</a>
-      <a href="#experience" data-idx="04"><span class="mi">04</span>Experience</a>
-      <a href="#contact" data-idx="05"><span class="mi">05</span>Contact</a>
-      <a href="cv.pdf" download data-idx="06"><span class="mi">06</span>Download CV <span class="ar">↗</span></a>
+      <a href="#case-studies" data-idx="03"><span class="mi">03</span>Case studies</a>
+      <a href="#credentials" data-idx="04"><span class="mi">04</span>Credentials</a>
+      <a href="#experience" data-idx="05"><span class="mi">05</span>Experience</a>
+      <a href="#contact" data-idx="06"><span class="mi">06</span>Contact</a>
+      <a href="cv.pdf" download data-idx="07"><span class="mi">07</span>Download CV <span class="ar">↗</span></a>
     </nav>
     <aside class="menu-side mono">
       <p class="ms-label">LOCATION</p>
@@ -354,7 +356,7 @@
           <div class="panel-chrome">
             <span class="pc-dot"></span><span class="pc-dot"></span><span class="pc-dot"></span>
             <span class="mono pc-title">LIVE ANALYTICS</span>
-            <span class="mono pc-full">FULL SCREEN ↗</span>
+            <button type="button" class="mono pc-full" id="panelFullscreen">FULL SCREEN ↗</button>
           </div>
           <div class="panel-body">
             <p class="mono panel-kicker" id="panelKicker">OPERATIONS ANALYTICS / EXECUTIVE VIEW</p>
@@ -379,34 +381,71 @@
     </div>
   </section>
 
+  <section id="case-studies" class="section">
+    <div class="shell">
+      <div class="sec-head mono reveal"><h2 class="sk">Case Studies</h2><span>Verified</span></div>
+
+      <div class="carousel reveal" id="credCarousel">
+        <div class="carousel-track" id="credTrack">
+          <div class="carousel-page">
+          <article class="cred-card">
+            <div class="cred-thumb">
+              <span class="mono">GOOGLE</span>
+              <p>Data Analytics<br>Professional Certificate</p>
+            </div>
+            <p class="mono cred-meta">GOOGLE · 2025</p>
+            <h3>Data Analytics — Professional Certificate</h3>
+            <p>Data cleaning, exploratory analysis, visualization, and presenting actionable insight in R and Tableau.</p>
+            <a href="#" class="mono cred-link">VIEW PDF ↗</a>
+          </article>
+          </div>
+          <div class="carousel-page">
+          <article class="cred-card">
+            <div class="cred-thumb">
+              <span class="mono">MICROSOFT</span>
+              <p>Power BI Data Analyst<br>Professional Certificate</p>
+            </div>
+            <p class="mono cred-meta">MICROSOFT · 2025</p>
+            <h3>Power BI Data Analyst — Professional Certificate</h3>
+            <p>Data modeling, DAX measures, star schemas, and dashboard delivery with Power BI.</p>
+            <a href="#" class="mono cred-link">VIEW PDF ↗</a>
+          </article>
+          </div>
+          <div class="carousel-page">
+          <article class="cred-card">
+            <div class="cred-thumb">
+              <span class="mono">DATACAMP</span>
+              <p>SQL for Data Science<br>Track Certificate</p>
+            </div>
+            <p class="mono cred-meta">DATACAMP · 2024</p>
+            <h3>SQL for Data Science — Track Certificate</h3>
+            <p>Querying, joins, window functions and query optimization across relational databases.</p>
+            <a href="#" class="mono cred-link">VIEW PDF ↗</a>
+          </article>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button type="button" class="carousel-arrow" id="credPrev" aria-label="Previous case study">‹</button>
+          <div class="carousel-dots" id="credDots">
+            <button type="button" class="dot active" data-page="0" aria-label="Case study 1"></button>
+            <button type="button" class="dot" data-page="1" aria-label="Case study 2"></button>
+            <button type="button" class="dot" data-page="2" aria-label="Case study 3"></button>
+          </div>
+          <button type="button" class="carousel-arrow" id="credNext" aria-label="Next case study">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="credentials" class="section">
     <div class="shell">
-      <div class="sec-head mono reveal"><h2 class="sk">Credentials</h2><span>Verified</span></div>
+      <div class="sec-head mono reveal"><h2 class="sk">Credentials</h2><span>Summary</span></div>
 
-      <div class="cred-grid">
-        <article class="cred-card reveal">
-          <div class="cred-thumb">
-            <span class="mono">GOOGLE</span>
-            <p>Data Analytics<br>Professional Certificate</p>
-          </div>
-          <p class="mono cred-meta">GOOGLE · 2025</p>
-          <h3>Data Analytics — Professional Certificate</h3>
-          <p>Data cleaning, exploratory analysis, visualization, and presenting actionable insight in R and Tableau.</p>
-          <a href="#" class="mono cred-link">VIEW PDF ↗</a>
-        </article>
-        <article class="cred-card reveal">
-          <div class="cred-thumb">
-            <span class="mono">MICROSOFT</span>
-            <p>Power BI Data Analyst<br>Professional Certificate</p>
-          </div>
-          <p class="mono cred-meta">MICROSOFT · 2025</p>
-          <h3>Power BI Data Analyst — Professional Certificate</h3>
-          <p>Data modeling, DAX measures, star schemas, and dashboard delivery with Power BI.</p>
-          <a href="#" class="mono cred-link">VIEW PDF ↗</a>
-        </article>
+      <div class="cred-text">
+        <p class="mono cred-text-line reveal"><span class="ctl-label">EDUCATION</span><span class="ctl-body"><b>B.Sc. — Statistics &amp; Data Science</b> · University Name · 2020–2024</span></p>
+        <p class="mono cred-text-line reveal"><span class="ctl-label">PROFESSIONAL CERTIFICATES</span><span class="ctl-body"><b>Data Analytics Professional Certificate</b> (Google) · <b>Power BI Data Analyst Professional Certificate</b> (Microsoft) · <b>SQL for Data Science</b> (DataCamp)</span></p>
+        <p class="mono cred-text-line reveal"><span class="ctl-label">COURSES</span><span class="ctl-body">Advanced Excel for Analysts · Statistics with Python · Data Visualization with Tableau</span></p>
       </div>
-
-      <p class="mono edu-line reveal">EDUCATION &nbsp; <b>B.Sc. — Statistics &amp; Data Science</b> · University Name · 2020–2024</p>
     </div>
   </section>
 
@@ -443,6 +482,30 @@
           <div class="xr-copy">
             <h3>Data Analyst Intern <em class="mono">· COMPANY NAME</em></h3>
             <p>Cleaned and modeled survey and operations data; built the first version of a weekly reporting workbook still used by the team today.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="sub-head mono reveal"><span>Volunteering</span></div>
+      <div class="xrows">
+        <article class="xrow reveal">
+          <div class="xr-when mono">
+            <span>2022 — PRESENT</span>
+            <span class="bar" style="--fill:100%"></span>
+          </div>
+          <div class="xr-copy">
+            <h3>Data Volunteer <em class="mono">· LOCAL NONPROFIT</em></h3>
+            <p>Built a lightweight donor and program-outcomes dashboard for a small nonprofit, replacing manual spreadsheet reporting with an automated monthly summary.</p>
+          </div>
+        </article>
+        <article class="xrow reveal">
+          <div class="xr-when mono">
+            <span>2021 — 2022</span>
+            <span class="bar" style="--fill:60%"></span>
+          </div>
+          <div class="xr-copy">
+            <h3>Mentor <em class="mono">· CODING BOOTCAMP ALUMNI NETWORK</em></h3>
+            <p>Mentored career-switchers through their first SQL and Excel projects, reviewing 20+ portfolio pieces over the year.</p>
           </div>
         </article>
       </div>
@@ -492,6 +555,11 @@
 </footer>
 
 <button class="to-top mono" id="toTop">↑ TOP</button>
+
+<div class="lightbox" id="dashboardLightbox">
+  <div class="lightbox-stage" id="lightboxStage"></div>
+  <button class="lightbox-close mono" id="lightboxClose">CLOSE ✕</button>
+</div>
 
 <script src="script.js"></script>
 </body>

@@ -168,6 +168,69 @@ if (panelTabs) {
   });
 }
 
+// Flagship "Full screen": moves the live panel into a lightbox (distinct from
+// the hero's "Open live dashboard", which just scrolls to this section)
+const dashboardLightbox = document.getElementById('dashboardLightbox');
+const lightboxStage = document.getElementById('lightboxStage');
+const lightboxClose = document.getElementById('lightboxClose');
+const panelFullscreen = document.getElementById('panelFullscreen');
+const flagshipPanel = document.getElementById('flagship-panel');
+const flagshipPanelHome = flagshipPanel ? flagshipPanel.parentNode : null;
+const flagshipPanelNext = flagshipPanel ? flagshipPanel.nextSibling : null;
+
+function openLightbox() {
+  if (!flagshipPanel) return;
+  lightboxStage.appendChild(flagshipPanel);
+  dashboardLightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  if (!flagshipPanel) return;
+  if (flagshipPanelNext) flagshipPanelHome.insertBefore(flagshipPanel, flagshipPanelNext);
+  else flagshipPanelHome.appendChild(flagshipPanel);
+  dashboardLightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+if (panelFullscreen) {
+  panelFullscreen.addEventListener('click', openLightbox);
+  lightboxClose.addEventListener('click', closeLightbox);
+  dashboardLightbox.addEventListener('click', (e) => { if (e.target === dashboardLightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && dashboardLightbox.classList.contains('open')) closeLightbox();
+  });
+}
+
+// Case studies carousel: auto-advances horizontally, with dot/arrow toggles
+const credCarousel = document.getElementById('credCarousel');
+if (credCarousel) {
+  const track = document.getElementById('credTrack');
+  const pages = credCarousel.querySelectorAll('.carousel-page');
+  const dots = credCarousel.querySelectorAll('.dot');
+  const prevBtn = document.getElementById('credPrev');
+  const nextBtn = document.getElementById('credNext');
+  let current = 0;
+  let timer = null;
+
+  function goTo(i) {
+    current = (i + pages.length) % pages.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === current));
+  }
+  function startAutoplay() {
+    timer = setInterval(() => goTo(current + 1), 4500);
+  }
+  function resetAutoplay() {
+    clearInterval(timer);
+    startAutoplay();
+  }
+  prevBtn.addEventListener('click', () => { goTo(current - 1); resetAutoplay(); });
+  nextBtn.addEventListener('click', () => { goTo(current + 1); resetAutoplay(); });
+  dots.forEach((dot, idx) => dot.addEventListener('click', () => { goTo(idx); resetAutoplay(); }));
+  credCarousel.addEventListener('mouseenter', () => clearInterval(timer));
+  credCarousel.addEventListener('mouseleave', startAutoplay);
+  startAutoplay();
+}
+
 // Live clock in the menu sidebar, pinned to a placeholder GMT+3 timezone
 const clockEls = document.querySelectorAll('[data-clock]');
 function tickClock() {
