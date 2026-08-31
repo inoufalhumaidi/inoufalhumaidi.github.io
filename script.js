@@ -263,6 +263,94 @@ if (credCarousel) {
   startAutoplay();
 }
 
+// Skills marquee: click a title for the detail behind it, in a small bubble
+const skillGroups = {
+  'Technical Skills': {
+    'Engineering & Control Systems': [
+      'Control Systems',
+      { name: 'PID Autopilot Development', children: ['Tuning', 'Implementation', 'Testing'] },
+      'Feedback Loops', 'Stability', 'Transfer Functions',
+      'Embedded Control Algorithms', 'Sensor & Actuator Integration', 'Power Systems & Wiring',
+    ],
+    'Embedded Systems & Hardware': ['C++ [Arduino]', 'Embedded Hardware', 'Arduino', 'ESCs', 'SBCs'],
+    'Programming & Data': ['Python', 'SQL', 'Power BI', 'DAX', 'Power Query', 'Excel', 'Tableau'],
+    'CAD & Design': ['SolidWorks', 'Adobe Illustrator', 'Canva'],
+  },
+  'Professional Skills': {
+    'Project Management': [
+      'Scope Management', 'Schedule Management', 'Cost Management', 'Resource Management',
+      'Risk Management', 'Quality Management', 'Procurement Management',
+      'Stakeholder Engagement', 'Communication Management',
+    ],
+    'Project Methodologies': ['Predictive / Waterfall', 'Agile', 'Scrum', 'Hybrid'],
+    'Business & Systems': ['Business Analysis', 'Systems Engineering Process', 'Integration Management', 'PMBOK-based Processes'],
+    'Work Management Tools': ['Jira', 'Asana'],
+    'Communication & Product': ['Presentation & Communication', 'Storytelling', 'Product Thinking', 'Time Management'],
+  },
+};
+
+const skillButtons = document.querySelectorAll('.mq-skill');
+if (skillButtons.length) {
+  const bubble = document.getElementById('skillBubble');
+  const bubbleBackdrop = document.getElementById('skillBubbleBackdrop');
+  const bubbleKicker = document.getElementById('skillBubbleKicker');
+  const bubbleTitle = document.getElementById('skillBubbleTitle');
+  const bubbleList = document.getElementById('skillBubbleList');
+
+  function findSkill(name) {
+    for (const [group, items] of Object.entries(skillGroups)) {
+      if (items[name]) return { group, items: items[name] };
+    }
+    return null;
+  }
+  function renderItems(list) {
+    return list.map((item) => {
+      if (typeof item === 'string') return `<li>${item}</li>`;
+      return `<li><b>${item.name}</b><ul>${item.children.map((c) => `<li>${c}</li>`).join('')}</ul></li>`;
+    }).join('');
+  }
+  function closeBubble() {
+    bubble.classList.remove('open');
+    bubbleBackdrop.classList.remove('open');
+    skillButtons.forEach((b) => b.classList.remove('active'));
+  }
+  function openBubble(btn) {
+    const data = findSkill(btn.dataset.skill);
+    if (!data) return;
+    skillButtons.forEach((b) => b.classList.toggle('active', b.dataset.skill === btn.dataset.skill));
+    bubbleKicker.textContent = data.group.toUpperCase();
+    bubbleTitle.textContent = btn.dataset.skill;
+    bubbleList.innerHTML = renderItems(data.items);
+    bubbleBackdrop.classList.add('open');
+    bubble.classList.add('open');
+
+    // position near the clicked title, clamped inside the viewport
+    const rect = btn.getBoundingClientRect();
+    const bw = bubble.offsetWidth || 340;
+    let left = rect.left + rect.width / 2 - bw / 2;
+    left = Math.max(12, Math.min(left, window.innerWidth - bw - 12));
+    const openBelow = rect.bottom + 320 < window.innerHeight;
+    bubble.style.left = left + 'px';
+    if (openBelow) {
+      bubble.style.top = (rect.bottom + 12) + 'px';
+      bubble.style.bottom = 'auto';
+    } else {
+      bubble.style.bottom = (window.innerHeight - rect.top + 12) + 'px';
+      bubble.style.top = 'auto';
+    }
+  }
+  skillButtons.forEach((btn) => btn.addEventListener('click', () => openBubble(btn)));
+  document.getElementById('skillBubbleClose').addEventListener('click', closeBubble);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeBubble(); });
+  // close on outside click, but never swallow a click on another skill title —
+  // that title's own handler already opened/updated the bubble for it
+  document.addEventListener('click', (e) => {
+    if (!bubble.classList.contains('open')) return;
+    if (bubble.contains(e.target) || e.target.closest('.mq-skill')) return;
+    closeBubble();
+  });
+}
+
 // Live clock in the menu sidebar, pinned to a placeholder GMT+3 timezone
 const clockEls = document.querySelectorAll('[data-clock]');
 function tickClock() {

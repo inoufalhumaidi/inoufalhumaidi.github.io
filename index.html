@@ -134,18 +134,37 @@
   <section class="section skills-section">
     <div class="shell">
       <div class="sec-head mono reveal"><h2 class="sk">Skills</h2><span>Toolkit</span></div>
+      <p class="sec-lead skills-lead reveal">A fast index of what I work with — click any title for the detail behind it.</p>
     </div>
     <div class="marquee-wrap">
       <div class="marquee mono">
         <div class="mq-row">
-          <span>SQL</span><span>/</span><span>PYTHON</span><span>/</span><span>POWER BI</span><span>/</span><span>TABLEAU</span><span>/</span><span>DAX</span><span>/</span><span>STATISTICS</span><span>/</span><span>A/B TESTING</span><span>/</span><span>DATA MODELING</span><span>/</span>
-          <span>SQL</span><span>/</span><span>PYTHON</span><span>/</span><span>POWER BI</span><span>/</span><span>TABLEAU</span><span>/</span><span>DAX</span><span>/</span><span>STATISTICS</span><span>/</span><span>A/B TESTING</span><span>/</span><span>DATA MODELING</span><span>/</span>
+          <span class="mq-label">TECHNICAL SKILLS</span><span class="mq-sep">—</span>
+          <button type="button" class="mq-skill" data-skill="Engineering &amp; Control Systems">Engineering &amp; Control Systems</button><span class="mq-sep">/</span>
+          <button type="button" class="mq-skill" data-skill="Embedded Systems &amp; Hardware">Embedded Systems &amp; Hardware</button><span class="mq-sep">/</span>
+          <button type="button" class="mq-skill" data-skill="Programming &amp; Data">Programming &amp; Data</button><span class="mq-sep">/</span>
+          <button type="button" class="mq-skill" data-skill="CAD &amp; Design">CAD &amp; Design</button><span class="mq-sep">/</span>
+          <span class="mq-label">TECHNICAL SKILLS</span><span class="mq-sep">—</span>
+          <button type="button" class="mq-skill" data-skill="Engineering &amp; Control Systems">Engineering &amp; Control Systems</button><span class="mq-sep">/</span>
+          <button type="button" class="mq-skill" data-skill="Embedded Systems &amp; Hardware">Embedded Systems &amp; Hardware</button><span class="mq-sep">/</span>
+          <button type="button" class="mq-skill" data-skill="Programming &amp; Data">Programming &amp; Data</button><span class="mq-sep">/</span>
+          <button type="button" class="mq-skill" data-skill="CAD &amp; Design">CAD &amp; Design</button><span class="mq-sep">/</span>
         </div>
       </div>
-      <div class="marquee mono rev">
+      <div class="marquee mono">
         <div class="mq-row">
-          <span>EXCEL</span><span>/</span><span>BIGQUERY</span><span>/</span><span>POSTGRESQL</span><span>/</span><span>KPI GOVERNANCE</span><span>/</span><span>ETL</span><span>/</span><span>FORECASTING</span><span>/</span><span>DASHBOARDS</span><span>/</span><span>STORYTELLING</span><span>/</span>
-          <span>EXCEL</span><span>/</span><span>BIGQUERY</span><span>/</span><span>POSTGRESQL</span><span>/</span><span>KPI GOVERNANCE</span><span>/</span><span>ETL</span><span>/</span><span>FORECASTING</span><span>/</span><span>DASHBOARDS</span><span>/</span><span>STORYTELLING</span><span>/</span>
+          <span class="mq-label accent2">PROFESSIONAL SKILLS</span><span class="mq-sep">—</span>
+          <button type="button" class="mq-skill" data-skill="Project Management">Project Management</button><span class="mq-sep">/</span>
+          <button type="button" class="mq-skill" data-skill="Project Methodologies">Project Methodologies</button><span class="mq-sep">/</span>
+          <button type="button" class="mq-skill" data-skill="Business &amp; Systems">Business &amp; Systems</button><span class="mq-sep">/</span>
+          <button type="button" class="mq-skill" data-skill="Work Management Tools">Work Management Tools</button><span class="mq-sep">/</span>
+          <button type="button" class="mq-skill" data-skill="Communication &amp; Product">Communication &amp; Product</button><span class="mq-sep">/</span>
+          <span class="mq-label accent2">PROFESSIONAL SKILLS</span><span class="mq-sep">—</span>
+          <button type="button" class="mq-skill" data-skill="Project Management">Project Management</button><span class="mq-sep">/</span>
+          <button type="button" class="mq-skill" data-skill="Project Methodologies">Project Methodologies</button><span class="mq-sep">/</span>
+          <button type="button" class="mq-skill" data-skill="Business &amp; Systems">Business &amp; Systems</button><span class="mq-sep">/</span>
+          <button type="button" class="mq-skill" data-skill="Work Management Tools">Work Management Tools</button><span class="mq-sep">/</span>
+          <button type="button" class="mq-skill" data-skill="Communication &amp; Product">Communication &amp; Product</button><span class="mq-sep">/</span>
         </div>
       </div>
     </div>
@@ -565,6 +584,14 @@
 <div class="lightbox" id="dashboardLightbox">
   <div class="lightbox-stage" id="lightboxStage"></div>
   <button class="lightbox-close mono" id="lightboxClose">CLOSE ✕</button>
+</div>
+
+<div class="skill-bubble-backdrop" id="skillBubbleBackdrop"></div>
+<div class="skill-bubble" id="skillBubble" role="dialog" aria-modal="true">
+  <button type="button" class="bubble-close mono" id="skillBubbleClose">✕</button>
+  <p class="mono bubble-kicker" id="skillBubbleKicker"></p>
+  <h4 id="skillBubbleTitle"></h4>
+  <ul id="skillBubbleList"></ul>
 </div>
 
 <script src="script.js"></script>
