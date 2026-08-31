@@ -18,39 +18,53 @@ If you'd rather use different filenames, that's fine too — just update the mat
 
 ## Case studies (Selected work section)
 
-Each project's "Open dashboard" link points at one of these files, plus one
-supporting file (a workbook, notebook, or Power BI file — whatever you actually
-built). Project 01 is the exception — its "Open dashboard" jumps straight to the
+Every project shows the same three buttons — DASHBOARD, NOTEBOOK, POWER BI FILE.
+Project 01 is the one exception: its DASHBOARD button jumps straight to the
 Flagship section's live mockup instead of a file, since that's the one project
 with a real interactive dashboard on the page.
 
-| Filename | Project |
+| Filename | Project · button |
 |---|---|
-| `case-study-01-retail-demand-forecasting.pdf` | 01 · Retail Demand Forecasting Model (not currently linked — "Open dashboard" points at Flagship instead; keep this file only if you want a separate write-up somewhere) |
-| `case-study-01-workbook.xlsx` | ↳ its Excel workbook |
-| `case-study-02-churn-early-warning.pdf` | 02 · Customer Churn Early-Warning System — "Open dashboard" |
-| `case-study-02-notebook.pdf` | ↳ its model notebook (export your .ipynb to PDF so it opens directly in the browser) |
-| `case-study-03-marketing-attribution.pdf` | 03 · Marketing Attribution Model — "Open dashboard" |
-| `case-study-03-power-bi-file.pbix` | ↳ its Power BI file |
-| `case-study-04-support-ticket-sla.pdf` | 04 · Support Ticket Triage & SLA Tracker — "Open dashboard" |
-| `case-study-04-workbook.xlsx` | ↳ its Excel workbook |
-| `case-study-05-checkout-funnel.pdf` | 05 · Checkout Funnel Experiment Analysis — "Open dashboard" |
-| `case-study-05-notebook.pdf` | ↳ its notebook |
+| — (points at `#flagship` instead) | 01 · Retail Demand Forecasting Model — DASHBOARD |
+| `case-study-01-notebook.pdf` | 01 — NOTEBOOK |
+| `case-study-01-power-bi-file.pbix` | 01 — POWER BI FILE |
+| `case-study-02-churn-early-warning.pdf` | 02 · Customer Churn Early-Warning System — DASHBOARD |
+| `case-study-02-notebook.pdf` | 02 — NOTEBOOK |
+| `case-study-02-power-bi-file.pbix` | 02 — POWER BI FILE |
+| `case-study-03-marketing-attribution.pdf` | 03 · Marketing Attribution Model — DASHBOARD |
+| `case-study-03-notebook.pdf` | 03 — NOTEBOOK |
+| `case-study-03-power-bi-file.pbix` | 03 — POWER BI FILE |
+| `case-study-04-support-ticket-sla.pdf` | 04 · Support Ticket Triage & SLA Tracker — DASHBOARD |
+| `case-study-04-notebook.pdf` | 04 — NOTEBOOK |
+| `case-study-04-power-bi-file.pbix` | 04 — POWER BI FILE |
+| `case-study-05-checkout-funnel.pdf` | 05 · Checkout Funnel Experiment Analysis — DASHBOARD |
+| `case-study-05-notebook.pdf` | 05 — NOTEBOOK |
+| `case-study-05-power-bi-file.pbix` | 05 — POWER BI FILE |
+
+Export a Jupyter notebook to PDF so the NOTEBOOK link opens directly in the browser
+instead of downloading a `.ipynb` file most visitors can't open.
+
+The old per-project `case-study-01-retail-demand-forecasting.pdf`,
+`case-study-01-workbook.xlsx` and `case-study-04-workbook.xlsx` files aren't linked
+from anywhere anymore now that every project uses the same three buttons — keep
+them only if you still want a write-up or workbook hosted somewhere else.
 
 ## Flagship dashboard
 
 | Filename | Used for |
 |---|---|
-| `flagship-excel-control-tower.xlsx` | "Excel workbook" link in the Flagship section |
-| `flagship-power-bi-file.pbix` | "Power BI file" link in the Flagship section |
+| `flagship-notebook.pdf` | "NOTEBOOK" button in the Flagship section |
+| `flagship-power-bi-file.pbix` | "POWER BI FILE" button in the Flagship section |
 
-Note: "Open live dashboard" doesn't need a file — it opens the on-page mockup panel
+Note: "LIVE DASHBOARD" doesn't need a file — it opens the on-page mockup panel
 (and its "Full screen" button), since there's no separately-hosted dashboard app.
+`flagship-excel-control-tower.xlsx` isn't linked anymore now that this section
+uses the same three-button set as the projects above.
 
 ## Certificates (Case Studies carousel)
 
 Clicking a card (not its button) opens an enlarged showcase view of the same
-card. Its "Open dashboard" button uses these files:
+card. Its "DASHBOARD" button uses these files:
 
 | Filename | Certificate |
 |---|---|
