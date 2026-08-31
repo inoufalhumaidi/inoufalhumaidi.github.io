@@ -131,33 +131,6 @@ document.querySelectorAll('.case-tabs').forEach((list) => {
   });
 });
 
-// Menu overlay
-const menuOverlay = document.getElementById('menuOverlay');
-const menuToggle = document.getElementById('menuToggle');
-const menuToggleLabel = menuToggle.querySelector('span');
-
-function openMenu() {
-  menuOverlay.classList.add('open');
-  menuToggle.classList.add('active');
-  menuToggle.setAttribute('aria-expanded', 'true');
-  menuToggleLabel.textContent = 'CLOSE';
-  document.body.style.overflow = 'hidden';
-}
-function closeMenu() {
-  menuOverlay.classList.remove('open');
-  menuToggle.classList.remove('active');
-  menuToggle.setAttribute('aria-expanded', 'false');
-  menuToggleLabel.textContent = 'MENU';
-  document.body.style.overflow = '';
-}
-menuToggle.addEventListener('click', () => {
-  menuOverlay.classList.contains('open') ? closeMenu() : openMenu();
-});
-menuOverlay.querySelectorAll('.menu-list a').forEach(a => a.addEventListener('click', closeMenu));
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeMenu();
-});
-
 // Flagship dashboard mockup: tabs swap the kicker/title/sub/KPIs
 const panelTabs = document.getElementById('panelTabs');
 const panelData = {
@@ -368,13 +341,3 @@ if (skillButtons.length) {
   });
 }
 
-// Live clock in the menu sidebar, pinned to a placeholder GMT+3 timezone
-const clockEls = document.querySelectorAll('[data-clock]');
-function tickClock() {
-  let t;
-  try { t = new Date().toLocaleTimeString('en-GB', { timeZone: 'Asia/Riyadh', hour12: false }); }
-  catch { t = new Date().toLocaleTimeString([], { hour12: false }); }
-  clockEls.forEach((el) => { el.textContent = t; });
-}
-tickClock();
-setInterval(tickClock, 1000);
