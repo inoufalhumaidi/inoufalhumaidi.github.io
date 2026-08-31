@@ -46,14 +46,16 @@
     <aside class="menu-side mono">
       <p class="ms-label">LOCATION</p>
       <p class="ms-val">REMOTE · OPEN TO RELOCATE</p>
-      <p class="ms-label">YOUR LOCAL TIME</p>
-      <p class="ms-val" id="liveClock">--:--:--</p>
+      <p class="ms-label">TIME ZONE</p>
+      <p class="ms-val">GMT+3</p>
+      <p class="ms-label">LOCAL TIME</p>
+      <p class="ms-val" id="liveClock" data-clock>--:--:--</p>
       <p class="ms-label">STATUS</p>
       <p class="ms-val">OPEN TO ANALYST ROLES · FULL-TIME</p>
       <div class="ms-links">
-        <a href="https://github.com/inoufalhumaidi" target="_blank" rel="noopener">GITHUB ↗</a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener">LINKEDIN ↗</a>
-        <a href="mailto:kawaiiusagichi@gmail.com">EMAIL ↗</a>
+        <a href="https://github.com/inoufalhumaidi" target="_blank" rel="noopener"><span class="ar">↗</span>GITHUB</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener"><span class="ar">↗</span>LINKEDIN</a>
+        <a href="mailto:kawaiiusagichi@gmail.com"><span class="ar">↗</span>EMAIL</a>
       </div>
       <p class="ms-version">V1.0 — 2026.08</p>
     </aside>
@@ -84,10 +86,22 @@
             <p class="dsr-role2 mono">ANALYST</p>
             <span class="dsr-rule" aria-hidden="true"></span>
             <dl class="dsr-meta mono">
-              <div><dt>LOCATION</dt><span class="dsr-led"></span><dd>REMOTE</dd></div>
-              <div><dt>FOCUS</dt><span class="dsr-led"></span><dd>DATA / ANALYTICS</dd></div>
-              <div><dt>STATUS</dt><span class="dsr-led on"></span><dd>AVAILABLE</dd></div>
-              <div><dt>SEEKING</dt><span class="dsr-led"></span><dd>ANALYST ROLES · FULL-TIME</dd></div>
+              <div>
+                <span class="dsr-ic"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14.2s4.3-4.25 4.3-8A4.3 4.3 0 1 0 3.7 6.2c0 3.75 4.3 8 4.3 8Z"/><circle cx="8" cy="6.2" r="1.45"/></svg></span>
+                <dt>LOCATION</dt><span class="dsr-led"></span><dd>REMOTE</dd>
+              </div>
+              <div>
+                <span class="dsr-ic"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"><circle cx="8" cy="8" r="4.7"/><path d="M8 1v3M8 12v3M1 8h3M12 8h3"/></svg></span>
+                <dt>FOCUS</dt><span class="dsr-led"></span><dd>DATA / ANALYTICS</dd>
+              </div>
+              <div>
+                <span class="dsr-ic"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.35"><circle cx="8" cy="8" r="5.5"/><circle cx="8" cy="8" r="1.7" fill="currentColor" stroke="none"/></svg></span>
+                <dt>STATUS</dt><span class="dsr-led on"></span><dd>AVAILABLE</dd>
+              </div>
+              <div>
+                <span class="dsr-ic"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12.5c0-1.9 2.7-3 6-3s6 1.1 6 3"/><circle cx="8" cy="5.2" r="2.6"/></svg></span>
+                <dt>SEEKING</dt><span class="dsr-led"></span><dd>ANALYST ROLES · FULL-TIME</dd>
+              </div>
             </dl>
             <div class="dsr-social mono">
               <a href="https://github.com/inoufalhumaidi" target="_blank" rel="noopener">GITHUB</a>
@@ -129,79 +143,192 @@
 
   <section id="work" class="section">
     <div class="shell">
-      <div class="sec-head reveal">
-        <p class="mono">SELECTED WORK</p>
-        <p class="mono sec-year">2026</p>
-      </div>
+      <div class="work-rail" aria-hidden="true"><span></span></div>
+      <div class="sec-head mono reveal"><h2 class="sk">Selected work</h2><span>2026</span></div>
       <p class="sec-lead reveal">Five self-directed analytics projects spanning public and synthetic operations data. Each includes a working artifact, transparent methodology, and a decision-focused case story.</p>
 
-      <div class="rows">
+      <div class="cases">
 
-        <article class="row flagship reveal">
-          <span class="idx-rail"><span class="dot on"></span></span>
-          <span class="idx mono">01</span>
-          <span class="spark-box">
-            <svg class="spark line" viewBox="0 0 60 24" fill="none"><polyline points="1,20 12,14 22,17 32,7 42,10 58,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <div class="row-copy">
-            <p class="flag-tag mono">[ FLAGSHIP ]</p>
-            <h3>Retail Demand Forecasting Model</h3>
-            <p class="row-stat mono">92.4% FORECAST ACCURACY · 18% FEWER STOCKOUTS ACROSS 40 SKUS</p>
+        <div class="case-item flagship reveal">
+          <button class="row" type="button" aria-expanded="false" aria-controls="case-01">
+            <span class="node" aria-hidden="true"></span>
+            <span class="spark-box">
+              <svg class="spark line" viewBox="0 0 60 24" fill="none"><polyline points="1,20 12,14 22,17 32,7 42,10 58,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="row-body">
+              <span class="idx mono">01</span>
+              <h3>Retail Demand Forecasting Model</h3>
+              <span class="row-stat mono">92.4% forecast accuracy · 18% fewer stockouts across 40 SKUs</span>
+              <span class="tags mono"><b class="t">Python</b><span class="t">SQL</span><span class="t">Forecasting</span><span class="t">KPIs</span></span>
+            </span>
+            <span class="go mono"><b>Open</b><span class="chev">+</span></span>
+          </button>
+          <div class="case" id="case-01">
+            <div class="case-inner">
+              <p class="case-dek">A 40-SKU forecasting model, a clean feature pipeline, and a live accuracy-vs-stockout dashboard.</p>
+              <p class="outcome"><span class="mono">Output</span> a weekly reorder signal per SKU, with the forecast error that produced it.</p>
+              <div class="case-tabs mono" role="tablist">
+                <button type="button" role="tab" id="c1t1" aria-controls="c1p1" aria-selected="true" class="ct-tab on">Situation</button>
+                <button type="button" role="tab" id="c1t2" aria-controls="c1p2" aria-selected="false" tabindex="-1" class="ct-tab">Built</button>
+                <button type="button" role="tab" id="c1t3" aria-controls="c1p3" aria-selected="false" tabindex="-1" class="ct-tab">Showed</button>
+              </div>
+              <div class="ct-panels">
+                <p class="ct-panel on" role="tabpanel" id="c1p1" aria-labelledby="c1t1">40 SKUs were reordered on gut feel and last month's sales, with no visibility into which items were about to run out or sit overstocked.</p>
+                <p class="ct-panel" role="tabpanel" id="c1p2" aria-labelledby="c1t2">A Python forecasting pipeline covering seasonality, promotions and lead time, a SQL layer feeding governed KPIs, and an interactive dashboard ranking SKUs by forecast risk.</p>
+                <p class="ct-panel" role="tabpanel" id="c1p3" aria-labelledby="c1t3">92.4% forecast accuracy at the SKU level cut stockouts by 18% and flagged 6 SKUs whose demand pattern had shifted enough to break the naive model — caught before they ran out.</p>
+              </div>
+              <p class="case-links mono">
+                <a href="#"><span class="ar">↗</span>Case study PDF</a>
+                <a href="#"><span class="ar">↗</span>Excel workbook</a>
+                <a href="#work"><span class="ar">↗</span>Live dashboard</a>
+              </p>
+            </div>
           </div>
-          <p class="tags mono">PYTHON · SQL · FORECASTING · KPIS</p>
-        </article>
+        </div>
 
-        <article class="row reveal">
-          <span class="idx-rail"><span class="dot"></span></span>
-          <span class="idx mono">02</span>
-          <span class="spark-box">
-            <svg class="spark bars" viewBox="0 0 60 24"><rect x="2" y="10" width="7" height="14"/><rect x="14" y="4" width="7" height="20"/><rect x="26" y="14" width="7" height="10"/><rect x="38" y="1" width="7" height="23"/><rect x="50" y="8" width="7" height="16"/></svg>
-          </span>
-          <div class="row-copy">
-            <h3>Customer Churn Early-Warning System</h3>
-            <p class="row-stat mono">31% OF CHURN FLAGGED 60 DAYS OUT · 8% PROJECTED RETENTION LIFT</p>
+        <div class="case-item reveal">
+          <button class="row" type="button" aria-expanded="false" aria-controls="case-02">
+            <span class="node" aria-hidden="true"></span>
+            <span class="spark-box">
+              <svg class="spark bars" viewBox="0 0 60 24"><rect x="2" y="10" width="7" height="14"/><rect x="14" y="4" width="7" height="20"/><rect x="26" y="14" width="7" height="10"/><rect x="38" y="1" width="7" height="23"/><rect x="50" y="8" width="7" height="16"/></svg>
+            </span>
+            <span class="row-body">
+              <span class="idx mono">02</span>
+              <h3>Customer Churn Early-Warning System</h3>
+              <span class="row-stat mono">31% of churn flagged 60 days out · 8% projected retention lift</span>
+              <span class="tags mono"><b class="t">Python</b><span class="t">scikit-learn</span><span class="t">Statistics</span></span>
+            </span>
+            <span class="go mono"><b>Open</b><span class="chev">+</span></span>
+          </button>
+          <div class="case" id="case-02">
+            <div class="case-inner">
+              <p class="case-dek">A churn-risk model trained on usage and support signals, scored weekly for the retention team.</p>
+              <p class="outcome"><span class="mono">Output</span> a ranked watchlist of accounts, with the top drivers behind each score.</p>
+              <div class="case-tabs mono" role="tablist">
+                <button type="button" role="tab" id="c2t1" aria-controls="c2p1" aria-selected="true" class="ct-tab on">Situation</button>
+                <button type="button" role="tab" id="c2t2" aria-controls="c2p2" aria-selected="false" tabindex="-1" class="ct-tab">Built</button>
+                <button type="button" role="tab" id="c2t3" aria-controls="c2p3" aria-selected="false" tabindex="-1" class="ct-tab">Showed</button>
+              </div>
+              <div class="ct-panels">
+                <p class="ct-panel on" role="tabpanel" id="c2p1" aria-labelledby="c2t1">Retention outreach happened only after a customer had already cancelled, with no earlier signal to act on.</p>
+                <p class="ct-panel" role="tabpanel" id="c2p2" aria-labelledby="c2t2">A gradient-boosted classifier on engagement, billing and support-ticket features, validated against 18 months of history, feeding a weekly scored watchlist.</p>
+                <p class="ct-panel" role="tabpanel" id="c2p3" aria-labelledby="c2t3">31% of eventual churners were flagged at least 60 days before cancelling. Acting on the top-risk tier projected an 8% retention lift against a holdout group.</p>
+              </div>
+              <p class="case-links mono">
+                <a href="#"><span class="ar">↗</span>Case study PDF</a>
+                <a href="#"><span class="ar">↗</span>Model notebook</a>
+              </p>
+            </div>
           </div>
-          <p class="tags mono">PYTHON · SCIKIT-LEARN · STATISTICS</p>
-        </article>
+        </div>
 
-        <article class="row reveal">
-          <span class="idx-rail"><span class="dot"></span></span>
-          <span class="idx mono">03</span>
-          <span class="spark-box">
-            <svg class="spark gauge" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".25" stroke-width="3" fill="none"/><circle class="val" cx="12" cy="12" r="9" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="56.5" stroke-dashoffset="14" stroke-linecap="round"/></svg>
-          </span>
-          <div class="row-copy">
-            <h3>Marketing Attribution Model</h3>
-            <p class="row-stat mono">4.2X CLEARER SPEND-TO-REVENUE LINE OF SIGHT</p>
+        <div class="case-item reveal">
+          <button class="row" type="button" aria-expanded="false" aria-controls="case-03">
+            <span class="node" aria-hidden="true"></span>
+            <span class="spark-box">
+              <svg class="spark gauge" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".25" stroke-width="3" fill="none"/><circle class="val" cx="12" cy="12" r="9" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="56.5" stroke-dashoffset="14" stroke-linecap="round"/></svg>
+            </span>
+            <span class="row-body">
+              <span class="idx mono">03</span>
+              <h3>Marketing Attribution Model</h3>
+              <span class="row-stat mono">4.2x clearer spend-to-revenue line of sight</span>
+              <span class="tags mono"><b class="t">SQL</b><span class="t">Power BI</span><span class="t">DAX</span></span>
+            </span>
+            <span class="go mono"><b>Open</b><span class="chev">+</span></span>
+          </button>
+          <div class="case" id="case-03">
+            <div class="case-inner">
+              <p class="case-dek">A multi-touch attribution model reconciling ad spend, sessions and conversions into one source of truth.</p>
+              <p class="outcome"><span class="mono">Output</span> a channel-level view of true incremental return, not last-click credit.</p>
+              <div class="case-tabs mono" role="tablist">
+                <button type="button" role="tab" id="c3t1" aria-controls="c3p1" aria-selected="true" class="ct-tab on">Situation</button>
+                <button type="button" role="tab" id="c3t2" aria-controls="c3p2" aria-selected="false" tabindex="-1" class="ct-tab">Built</button>
+                <button type="button" role="tab" id="c3t3" aria-controls="c3p3" aria-selected="false" tabindex="-1" class="ct-tab">Showed</button>
+              </div>
+              <div class="ct-panels">
+                <p class="ct-panel on" role="tabpanel" id="c3p1" aria-labelledby="c3t1">Each ad platform reported its own conversions, so channel budgets were argued from four contradictory numbers.</p>
+                <p class="ct-panel" role="tabpanel" id="c3p2" aria-labelledby="c3t2">A SQL layer joining spend, sessions and orders, a data-driven attribution model, and DAX measures feeding one governed Power BI report.</p>
+                <p class="ct-panel" role="tabpanel" id="c3p3" aria-labelledby="c3t3">Reconciling the numbers gave 4.2x clearer visibility into spend-to-revenue, and reallocating budget away from an over-credited channel toward two under-credited ones.</p>
+              </div>
+              <p class="case-links mono">
+                <a href="#"><span class="ar">↗</span>Case study PDF</a>
+                <a href="#"><span class="ar">↗</span>Power BI file</a>
+              </p>
+            </div>
           </div>
-          <p class="tags mono">SQL · POWER BI · DAX</p>
-        </article>
+        </div>
 
-        <article class="row reveal">
-          <span class="idx-rail"><span class="dot"></span></span>
-          <span class="idx mono">04</span>
-          <span class="spark-box">
-            <svg class="spark dots" viewBox="0 0 60 24"><circle cx="4" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><circle cx="32" cy="12" r="3"/><circle cx="46" cy="12" r="3"/><circle cx="58" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></svg>
-          </span>
-          <div class="row-copy">
-            <h3>Support Ticket Triage &amp; SLA Tracker</h3>
-            <p class="row-stat mono">97% SLA TRACEABILITY · 41% FASTER TRIAGE TIME</p>
+        <div class="case-item reveal">
+          <button class="row" type="button" aria-expanded="false" aria-controls="case-04">
+            <span class="node" aria-hidden="true"></span>
+            <span class="spark-box">
+              <svg class="spark dots" viewBox="0 0 60 24"><circle cx="4" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><circle cx="32" cy="12" r="3"/><circle cx="46" cy="12" r="3"/><circle cx="58" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+            </span>
+            <span class="row-body">
+              <span class="idx mono">04</span>
+              <h3>Support Ticket Triage &amp; SLA Tracker</h3>
+              <span class="row-stat mono">97% SLA traceability · 41% faster triage time</span>
+              <span class="tags mono"><b class="t">SQL</b><span class="t">Excel</span><span class="t">Process mapping</span></span>
+            </span>
+            <span class="go mono"><b>Open</b><span class="chev">+</span></span>
+          </button>
+          <div class="case" id="case-04">
+            <div class="case-inner">
+              <p class="case-dek">A ticket taxonomy, SLA rules and a triage tracker built from six months of support data.</p>
+              <p class="outcome"><span class="mono">Output</span> a live view of every ticket's SLA clock and who owns the next action.</p>
+              <div class="case-tabs mono" role="tablist">
+                <button type="button" role="tab" id="c4t1" aria-controls="c4p1" aria-selected="true" class="ct-tab on">Situation</button>
+                <button type="button" role="tab" id="c4t2" aria-controls="c4p2" aria-selected="false" tabindex="-1" class="ct-tab">Built</button>
+                <button type="button" role="tab" id="c4t3" aria-controls="c4p3" aria-selected="false" tabindex="-1" class="ct-tab">Showed</button>
+              </div>
+              <div class="ct-panels">
+                <p class="ct-panel on" role="tabpanel" id="c4p1" aria-labelledby="c4t1">Tickets were tagged inconsistently, so nobody could say reliably which SLAs were actually being met.</p>
+                <p class="ct-panel" role="tabpanel" id="c4p2" aria-labelledby="c4t2">A cleaned ticket taxonomy, explicit SLA rules by severity, and an Excel/SQL tracker showing the clock, owner and next action per ticket.</p>
+                <p class="ct-panel" role="tabpanel" id="c4p3" aria-labelledby="c4t3">SLA traceability reached 97%, and standardizing the triage queue cut average time-to-first-response by 41%.</p>
+              </div>
+              <p class="case-links mono">
+                <a href="#"><span class="ar">↗</span>Case study PDF</a>
+                <a href="#"><span class="ar">↗</span>Excel workbook</a>
+              </p>
+            </div>
           </div>
-          <p class="tags mono">SQL · EXCEL · PROCESS MAPPING</p>
-        </article>
+        </div>
 
-        <article class="row reveal">
-          <span class="idx-rail"><span class="dot"></span></span>
-          <span class="idx mono">05</span>
-          <span class="spark-box">
-            <svg class="spark line" viewBox="0 0 60 24" fill="none"><polyline points="1,4 12,18 22,9 32,20 42,6 58,15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <div class="row-copy">
-            <h3>Checkout Funnel Experiment Analysis</h3>
-            <p class="row-stat mono">4.2% CONVERSION LIFT, VALIDATED WITH GUARDRAIL METRICS</p>
+        <div class="case-item reveal">
+          <button class="row" type="button" aria-expanded="false" aria-controls="case-05">
+            <span class="node" aria-hidden="true"></span>
+            <span class="spark-box">
+              <svg class="spark line" viewBox="0 0 60 24" fill="none"><polyline points="1,4 12,18 22,9 32,20 42,6 58,15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span class="row-body">
+              <span class="idx mono">05</span>
+              <h3>Checkout Funnel Experiment Analysis</h3>
+              <span class="row-stat mono">4.2% conversion lift, validated with guardrail metrics</span>
+              <span class="tags mono"><b class="t">Python</b><span class="t">A/B testing</span><span class="t">Plotly</span></span>
+            </span>
+            <span class="go mono"><b>Open</b><span class="chev">+</span></span>
+          </button>
+          <div class="case" id="case-05">
+            <div class="case-inner">
+              <p class="case-dek">A series of checkout A/B tests analyzed for significance, guardrails and long-run stability.</p>
+              <p class="outcome"><span class="mono">Output</span> a validated redesign recommendation, not just a p-value.</p>
+              <div class="case-tabs mono" role="tablist">
+                <button type="button" role="tab" id="c5t1" aria-controls="c5p1" aria-selected="true" class="ct-tab on">Situation</button>
+                <button type="button" role="tab" id="c5t2" aria-controls="c5p2" aria-selected="false" tabindex="-1" class="ct-tab">Built</button>
+                <button type="button" role="tab" id="c5t3" aria-controls="c5p3" aria-selected="false" tabindex="-1" class="ct-tab">Showed</button>
+              </div>
+              <div class="ct-panels">
+                <p class="ct-panel on" role="tabpanel" id="c5p1" aria-labelledby="c5t1">Past checkout tests were called "winners" from raw conversion counts alone, with no check for novelty effects or guardrail regressions.</p>
+                <p class="ct-panel" role="tabpanel" id="c5p2" aria-labelledby="c5t2">A Python analysis pipeline with proper significance testing, pre-registered guardrail metrics (refunds, support tickets), and Plotly visualizations of the effect over time.</p>
+                <p class="ct-panel" role="tabpanel" id="c5p3" aria-labelledby="c5t3">The winning variant held a 4.2% conversion lift after two weeks with no guardrail regression — validated before shipping to 100% of traffic.</p>
+              </div>
+              <p class="case-links mono">
+                <a href="#"><span class="ar">↗</span>Case study PDF</a>
+                <a href="#"><span class="ar">↗</span>Notebook</a>
+              </p>
+            </div>
           </div>
-          <p class="tags mono">PYTHON · A/B TESTING · PLOTLY</p>
-        </article>
+        </div>
 
       </div>
     </div>
@@ -247,10 +374,7 @@
 
   <section id="credentials" class="section">
     <div class="shell">
-      <div class="sec-head reveal">
-        <p class="mono">CREDENTIALS</p>
-        <p class="mono sec-year">VERIFIED</p>
-      </div>
+      <div class="sec-head mono reveal"><h2 class="sk">Credentials</h2><span>Verified</span></div>
 
       <div class="cred-grid">
         <article class="cred-card reveal">
@@ -281,10 +405,7 @@
 
   <section id="experience" class="section">
     <div class="shell">
-      <div class="sec-head reveal">
-        <p class="mono">EXPERIENCE</p>
-        <p class="mono sec-year">2023 — NOW</p>
-      </div>
+      <div class="sec-head mono reveal"><h2 class="sk">Experience</h2><span>2023 — Now</span></div>
 
       <div class="xrows">
         <article class="xrow reveal">
