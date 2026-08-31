@@ -60,6 +60,17 @@ if (navSections.length) {
     });
   }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
   navSections.forEach((s) => navObserver.observe(s));
+
+  // The reading-line band above never reaches into a short last section once
+  // the page runs out of room to scroll further, so it can never fire an
+  // intersection for it. Force that link active once you're at the bottom.
+  const lastNavLink = navLinks[navLinks.length - 1];
+  document.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    if (doc.scrollTop + doc.clientHeight >= doc.scrollHeight - 2) {
+      navLinks.forEach((a) => a.classList.toggle('active', a === lastNavLink));
+    }
+  }, { passive: true });
 }
 
 // Reveal on scroll
@@ -359,10 +370,11 @@ if (skillButtons.length) {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const MODES = {
-    normal: { frameCount: 2, seq: [0, 0, 0, 0, 0, 0, 1], stepMs: 1000 / 6 },
-    link: { frameCount: 3, seq: [0, 0, 1, 1, 0, 0, 2, 1], stepMs: 1000 / 6 },
-    working: { frameCount: 11, seq: null, stepMs: 1000 / 12 },
-    expand: { frameCount: 2, seq: [0, 0, 0, 0, 0, 0, 1], stepMs: 1000 / 6 },
+    normal: { frameCount: 2, seq: [0, 0, 0, 0, 0, 0, 1], stepMs: 1000 / 6, hx: 0, hy: 8 },
+    link: { frameCount: 3, seq: [0, 0, 1, 1, 0, 0, 2, 1], stepMs: 1000 / 6, hx: 0, hy: 8 },
+    working: { frameCount: 11, seq: null, stepMs: 1000 / 12, hx: 0, hy: 8 },
+    // clear diagonal-resize glyph, used as the "expand" cursor; its own hotspot differs from the others
+    expand: { frameCount: 1, seq: null, stepMs: 0, hx: 9, hy: 14 },
   };
 
   document.documentElement.classList.add('has-custom-cursor');
@@ -371,6 +383,13 @@ if (skillButtons.length) {
   let timer = null;
   let step = 0;
   let workingUntil = 0;
+  let hotspot = MODES.normal;
+  let lastX = 0;
+  let lastY = 0;
+
+  function positionCursor() {
+    el.style.transform = `translate3d(${lastX - hotspot.hx}px, ${lastY - hotspot.hy}px, 0)`;
+  }
 
   function setMode(mode) {
     if (mode === currentMode) return;
@@ -380,6 +399,8 @@ if (skillButtons.length) {
     step = 0;
     el.style.backgroundPositionX = '0px';
     const m = MODES[mode];
+    hotspot = m;
+    positionCursor();
     if (reduced || m.frameCount <= 1) return;
     timer = setInterval(() => {
       step = (step + 1) % (m.seq ? m.seq.length : m.frameCount);
@@ -390,7 +411,9 @@ if (skillButtons.length) {
   setMode('normal');
 
   document.addEventListener('mousemove', (e) => {
-    el.style.transform = `translate3d(${e.clientX}px, ${e.clientY - 8}px, 0)`;
+    lastX = e.clientX;
+    lastY = e.clientY;
+    positionCursor();
   }, { passive: true });
 
   const EXPAND_SELECTOR = '.idcard, .cred-card, .dsr-photo, .carousel-page';
