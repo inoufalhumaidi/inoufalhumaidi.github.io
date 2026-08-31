@@ -60,6 +60,13 @@ a { color: inherit; text-decoration: none; }
 .topnav { display: flex; gap: 26px; }
 .topnav a { font-size: 11px; letter-spacing: .06em; color: var(--muted); transition: color .15s; }
 .topnav a:hover { color: var(--ink); }
+/* bracket notation tracks whichever section is currently in view, same
+   motif as the case-study tabs ("[ situation ]") and the flagship label */
+.topnav a::before, .topnav a::after { opacity: 0; color: var(--accent); transition: opacity .2s ease; }
+.topnav a::before { content: "[ "; }
+.topnav a::after { content: " ]"; }
+.topnav a.active { color: var(--accent); }
+.topnav a.active::before, .topnav a.active::after { opacity: 1; }
 .index-btn {
   position: relative; background: none; border: 1px solid var(--line); color: var(--ink);
   font-size: 11px; letter-spacing: .08em; padding: 7px 16px; border-radius: 4px; cursor: pointer;
@@ -162,7 +169,7 @@ a { color: inherit; text-decoration: none; }
 
 /* hero copy */
 .hero-copy { padding-top: 26px; }
-.eyebrow { font-size: 11px; letter-spacing: .1em; color: var(--accent-2); margin: 0 0 18px; text-transform: uppercase; }
+.eyebrow { font-size: 11px; letter-spacing: .1em; color: #4f9c8c; margin: 0 0 18px; text-transform: uppercase; }
 /* staggered hero entrance: card settles first, then copy cascades line by line */
 .eyebrow.reveal { transition-delay: .08s; }
 .hero h1.reveal { transition-delay: .16s; }

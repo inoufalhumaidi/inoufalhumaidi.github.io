@@ -42,6 +42,22 @@ onScroll();
 
 toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
+// Nav active-section tracking: brackets the header link for whichever
+// section is currently crossing the reading line, moving as you scroll
+const navLinks = [...document.querySelectorAll('.topnav a[href^="#"]')];
+const navSections = navLinks
+  .map((a) => document.querySelector(a.getAttribute('href')))
+  .filter(Boolean);
+if (navSections.length) {
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      navLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === `#${entry.target.id}`));
+    });
+  }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+  navSections.forEach((s) => navObserver.observe(s));
+}
+
 // Reveal on scroll
 const revealEls = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
