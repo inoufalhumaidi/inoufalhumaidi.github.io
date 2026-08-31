@@ -32,6 +32,10 @@ function updateRail() {
   railRows.forEach((node) => node.classList.toggle('rail-lit', node === closest && closestDist < window.innerHeight));
 }
 
+// Mobile section strip: slides in under the header once you've scrolled past the hero
+const secnav = document.getElementById('secnav');
+const heroEl = document.querySelector('.hero');
+
 function onScroll() {
   const doc = document.documentElement;
   const max = doc.scrollHeight - doc.clientHeight;
@@ -39,6 +43,7 @@ function onScroll() {
   progress.style.width = pct + '%';
   topbar.classList.toggle('scrolled', doc.scrollTop > 8);
   toTop.classList.toggle('show', doc.scrollTop > 500);
+  if (secnav && heroEl) secnav.classList.toggle('show', heroEl.getBoundingClientRect().bottom < 0);
   updateRail();
 }
 document.addEventListener('scroll', onScroll, { passive: true });
@@ -74,8 +79,10 @@ if (menuToggle && menuOverlay) {
 }
 
 // Nav active-section tracking: brackets the header link for whichever
-// section is currently crossing the reading line, moving as you scroll
-const navLinks = [...document.querySelectorAll('.topnav a[href^="#"]')];
+// section is currently crossing the reading line, moving as you scroll.
+// The mobile section strip shares the same active state, so its pills
+// light up in sync with the desktop topnav brackets.
+const navLinks = [...document.querySelectorAll('.topnav a[href^="#"], .secnav a[href^="#"]')];
 const navSections = navLinks
   .map((a) => document.querySelector(a.getAttribute('href')))
   .filter(Boolean);
