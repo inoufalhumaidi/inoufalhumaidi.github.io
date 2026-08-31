@@ -209,14 +209,15 @@ a { color: inherit; text-decoration: none; }
 .sec-lead { color: var(--muted); max-width: 620px; margin: 0 0 44px; }
 
 /* ---------- work: accordion case rows ---------- */
-#work .shell { position: relative; }
-.work-rail { position: absolute; left: -2px; top: 128px; bottom: 40px; width: 1px; background: var(--line-strong); pointer-events: none; }
+.cases { position: relative; display: flex; flex-direction: column; }
+/* anchored to .cases (not the whole shell) so it always starts at the first
+   row and ends at the last, regardless of how long the intro paragraph wraps */
+.work-rail { position: absolute; left: -2px; top: 0; bottom: 0; width: 1px; background: var(--line-strong); pointer-events: none; }
 .work-rail span {
   position: absolute; left: 0; top: 0; width: 1px; height: var(--rail, 0%);
   background: var(--accent); box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 65%, transparent);
   transition: height .1s linear;
 }
-.cases { display: flex; flex-direction: column; }
 .case-item { border-bottom: 1px solid var(--line); position: relative; }
 .case-item.flagship::before {
   content: "[ flagship ]"; position: absolute; top: 14px; left: 44px; z-index: 1;
@@ -382,10 +383,15 @@ a { color: inherit; text-decoration: none; }
 .ctl-label { flex: 0 0 200px; color: var(--faint); letter-spacing: .08em; font-size: 10.5px; }
 .ctl-body { flex: 1 1 300px; }
 .ctl-body b { color: var(--ink); font-weight: 600; }
+.ctl-view {
+  flex: 0 0 auto; margin-left: auto; font-size: 10.5px; letter-spacing: .06em; color: var(--ink);
+  border-bottom: 1px solid var(--line); padding-bottom: 1px; transition: color .2s, border-color .2s;
+}
+.ctl-view:hover { color: var(--accent); border-color: var(--accent); }
 
 /* ---------- Experience: Volunteering sub-section ---------- */
-.sub-head { margin: 44px 0 20px; }
-.sub-head span { font-size: 11px; letter-spacing: .1em; color: var(--accent-2); text-transform: uppercase; }
+/* Volunteering sits directly under the experience list, as its own labeled row */
+.cred-text-sub { margin-top: 44px; }
 
 @media (max-width: 760px) {
   .ctl-label { flex-basis: 100%; }
