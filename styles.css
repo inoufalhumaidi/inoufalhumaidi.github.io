@@ -15,6 +15,7 @@
   --display: 'Chivo', 'Inter', system-ui, sans-serif;
   --body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --ease: cubic-bezier(.22, .61, .36, 1);
+  --row-pad: 26px; /* shared vertical padding for .row and .xrow list items */
 }
 
 * { box-sizing: border-box; }
@@ -162,6 +163,12 @@ a { color: inherit; text-decoration: none; }
 /* hero copy */
 .hero-copy { padding-top: 26px; }
 .eyebrow { font-size: 11px; letter-spacing: .1em; color: var(--accent-2); margin: 0 0 18px; text-transform: uppercase; }
+/* staggered hero entrance: card settles first, then copy cascades line by line */
+.eyebrow.reveal { transition-delay: .08s; }
+.hero h1.reveal { transition-delay: .16s; }
+.lead.reveal { transition-delay: .26s; }
+.actions.reveal { transition-delay: .34s; }
+.stackline.reveal { transition-delay: .42s; }
 .hero h1 {
   font-family: var(--display); font-weight: 900; font-size: clamp(2rem, 4.4vw, 3.2rem); line-height: 1.14;
   letter-spacing: -.02em; margin: 0 0 20px;
@@ -218,7 +225,7 @@ a { color: inherit; text-decoration: none; }
 .case-item.flagship .row { padding-top: 48px; }
 .row {
   position: relative; width: 100%; display: grid; grid-template-columns: 62px 1fr 84px;
-  column-gap: 22px; align-items: center; padding: 26px 4px 26px 30px; font: inherit; color: inherit;
+  column-gap: 22px; align-items: center; padding: var(--row-pad) 4px var(--row-pad) 30px; font: inherit; color: inherit;
   text-align: left; background: none; border: 0; cursor: pointer; transition: background .3s var(--ease);
 }
 .row:hover { background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 10%, transparent), transparent 70%); }
@@ -298,7 +305,8 @@ a { color: inherit; text-decoration: none; }
 .int-copy h2 { font-family: var(--display); font-weight: 800; font-size: clamp(1.4rem, 2.6vw, 1.9rem); margin: 0 0 16px; }
 .int-copy p { color: var(--muted); margin: 0 0 20px; }
 .int-links { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
-.int-links a { font-size: 12px; letter-spacing: .04em; color: var(--ink); border-bottom: 1px solid var(--line); width: fit-content; padding-bottom: 2px; }
+.int-links a { font-size: 12px; letter-spacing: .04em; color: var(--ink); border-bottom: 1px solid var(--line); width: fit-content; padding-bottom: 2px; transition: color .2s, border-color .2s; }
+.int-links a:hover { color: var(--accent); border-color: var(--accent); }
 .int-note { font-size: 10px; color: var(--faint); letter-spacing: .03em; }
 .int-panel { border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); box-shadow: 0 24px 50px -30px color-mix(in srgb, var(--ink) 40%, transparent); }
 .panel-chrome { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: var(--surface-2); border-bottom: 1px solid var(--line); }
@@ -343,7 +351,8 @@ a { color: inherit; text-decoration: none; }
 .cred-meta { font-size: 10px; letter-spacing: .06em; color: var(--accent-2); margin: 0 0 6px; }
 .cred-card h3 { font-size: 1rem; margin: 0 0 8px; }
 .cred-card p:last-of-type { color: var(--muted); font-size: .88rem; margin: 0 0 14px; }
-.cred-link { font-size: 11px; letter-spacing: .04em; color: var(--ink); border-bottom: 1px solid var(--line); }
+.cred-link { font-size: 11px; letter-spacing: .04em; color: var(--ink); border-bottom: 1px solid var(--line); transition: color .2s, border-color .2s; }
+.cred-link:hover { color: var(--accent); border-color: var(--accent); }
 
 /* ---------- Case studies carousel ---------- */
 .carousel { position: relative; overflow: hidden; }
@@ -360,6 +369,7 @@ a { color: inherit; text-decoration: none; }
   width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid var(--faint); background: none; padding: 0; cursor: pointer;
   transition: background .2s, border-color .2s, transform .2s;
 }
+.carousel-dots .dot:hover { border-color: var(--accent); }
 .carousel-dots .dot.active { background: var(--accent); border-color: var(--accent); transform: scale(1.2); }
 
 /* ---------- Credentials: plain text summary ---------- */
@@ -374,7 +384,7 @@ a { color: inherit; text-decoration: none; }
 .ctl-body b { color: var(--ink); font-weight: 600; }
 
 /* ---------- Experience: Volunteering sub-section ---------- */
-.sub-head { margin: 44px 0 20px; padding-top: 26px; border-top: 1px solid var(--line); }
+.sub-head { margin: 44px 0 20px; }
 .sub-head span { font-size: 11px; letter-spacing: .1em; color: var(--accent-2); text-transform: uppercase; }
 
 @media (max-width: 760px) {
@@ -383,7 +393,7 @@ a { color: inherit; text-decoration: none; }
 
 /* experience */
 .xrows { display: flex; flex-direction: column; }
-.xrow { display: grid; grid-template-columns: 200px 1fr; gap: 30px; padding: 24px 0; border-bottom: 1px solid var(--line); transition: transform .3s var(--ease); }
+.xrow { display: grid; grid-template-columns: 200px 1fr; gap: 30px; padding: var(--row-pad) 0; border-bottom: 1px solid var(--line); transition: transform .3s var(--ease); }
 .xrow:hover { transform: translateX(8px); }
 .xr-when { display: flex; flex-direction: column; gap: 8px; font-size: 11px; letter-spacing: .04em; color: var(--muted); }
 .xr-when .bar { position: relative; height: 2px; background: var(--line); border-radius: 2px; overflow: hidden; }
@@ -417,9 +427,11 @@ a { color: inherit; text-decoration: none; }
 .to-top {
   position: fixed; right: 20px; bottom: 20px; z-index: 90; background: var(--surface); border: 1px solid var(--line);
   border-radius: 999px; padding: 10px 16px; font-size: 10.5px; letter-spacing: .06em; color: var(--ink); cursor: pointer;
-  opacity: 0; transform: translateY(8px); pointer-events: none; transition: opacity .25s, transform .25s;
+  opacity: 0; transform: translateY(8px); pointer-events: none;
+  transition: opacity .25s, transform .25s, border-color .2s, color .2s;
 }
 .to-top.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.to-top:hover { border-color: var(--accent); color: var(--accent); }
 
 /* ---------- Flagship full-screen lightbox ---------- */
 .lightbox {
@@ -442,3 +454,13 @@ a { color: inherit; text-decoration: none; }
 .js .reveal.visible { opacity: 1; transform: none; }
 .js .idcard.reveal { transform: translateY(24px) rotateX(6deg) scale(.985); }
 .js .idcard.reveal.visible { transform: none; }
+
+/* ---------- Reduced motion: cut transforms/animations, keep the end state ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal, .js .idcard.reveal {
+    transition-duration: .01ms !important; transition-delay: 0s !important;
+    opacity: 1; transform: none;
+  }
+  .mq-row, .dsr-led.on { animation: none !important; }
+  .row, .xrow, .ch, .btn-line, .index-btn, .to-top { transition-duration: .01ms !important; }
+}

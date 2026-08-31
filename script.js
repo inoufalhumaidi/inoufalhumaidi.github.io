@@ -56,6 +56,14 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 revealEls.forEach(el => observer.observe(el));
 
+// Safety net: if the observer never fires (unexpected error, odd viewport),
+// nothing should stay invisible forever.
+setTimeout(() => {
+  if (!document.querySelector('.reveal.visible')) {
+    revealEls.forEach(el => el.classList.add('visible'));
+  }
+}, 3000);
+
 // Selected-work accordion: one case open at a time, animated height
 const caseToggles = document.querySelectorAll('.row[aria-controls]');
 function setCase(btn, panel, open) {
