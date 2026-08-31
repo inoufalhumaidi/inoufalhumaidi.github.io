@@ -502,6 +502,8 @@ a { color: inherit; text-decoration: none; }
 }
 .bubble-close:hover { color: var(--accent); }
 .bubble-kicker { font-size: 10px; letter-spacing: .12em; color: var(--accent-2); margin: 0 0 8px; padding-right: 20px; }
+/* match each group's colour in the marquee (pink for technical, teal for professional) */
+.bubble-kicker.technical { color: var(--accent); }
 .skill-bubble h4 { font-family: var(--display); font-size: 1.05rem; margin: 0 0 12px; padding-right: 20px; }
 .skill-bubble ul { margin: 0; padding-left: 18px; }
 .skill-bubble li { font-size: 12.5px; line-height: 1.6; color: var(--muted); }

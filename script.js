@@ -335,6 +335,7 @@ if (skillButtons.length) {
     if (!data) return;
     skillButtons.forEach((b) => b.classList.toggle('active', b.dataset.skill === btn.dataset.skill));
     bubbleKicker.textContent = data.group.toUpperCase();
+    bubbleKicker.classList.toggle('technical', data.group === 'Technical Skills');
     bubbleTitle.textContent = btn.dataset.skill;
     bubbleList.innerHTML = renderItems(data.items);
     bubbleBackdrop.classList.add('open');
