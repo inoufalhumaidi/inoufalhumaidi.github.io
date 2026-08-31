@@ -145,10 +145,13 @@ a { color: inherit; text-decoration: none; }
 }
 .dsr-seam { position: absolute; left: 0; right: 0; top: 148px; height: 1px; background: var(--line); }
 .dsr-photo {
-  height: 148px; display: flex; align-items: center; justify-content: center;
+  position: relative; height: 148px; display: flex; align-items: center; justify-content: center;
   background: linear-gradient(135deg, var(--accent-3), var(--accent));
 }
 .dsr-photo span { font-family: var(--display); font-weight: 900; font-size: 2.6rem; color: var(--surface); letter-spacing: -.02em; }
+/* if profile-photo.jpg exists it covers the initials underneath; if it 404s the
+   onerror handler hides it and the gradient + initials placeholder shows through */
+.dsr-photo img { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
 .dsr-body { padding: 20px 22px 24px; }
 .dsr-name { font-family: var(--display); font-weight: 900; font-size: 1.3rem; margin: 0; letter-spacing: -.01em; }
 .dsr-role { margin: 6px 0 0; font-size: 10.5px; letter-spacing: .08em; color: var(--accent); font-weight: 600; }
