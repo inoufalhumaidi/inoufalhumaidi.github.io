@@ -1,232 +1,354 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="js">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inouf Alhumaidi — Data Analyst</title>
-<meta name="description" content="Portfolio of Inouf Alhumaidi, Data Analyst — projects, skills, and experience.">
+<title>Nouf Alhumaidi — Data Analyst</title>
+<meta name="description" content="Portfolio of Nouf Alhumaidi, Data Analyst — case files, credentials, and experience.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700;900&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div class="noise"></div>
+<span class="frame tl" aria-hidden="true"></span>
+<span class="frame tr" aria-hidden="true"></span>
+<span class="frame bl" aria-hidden="true"></span>
+<span class="frame br" aria-hidden="true"></span>
+<span class="scroll-progress" id="scrollProgress"></span>
 
-<header class="nav">
-  <div class="nav-inner">
-    <a href="#top" class="brand">IA<span class="dot">.</span></a>
-    <nav class="nav-links">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
+<header class="topbar" id="topbar">
+  <div class="shell">
+    <a href="#top" class="id mono">NOUF ALHUMAIDI <span>/ ANALYST</span></a>
+    <nav class="mono topnav">
+      <a href="#work">WORK</a>
+      <a href="#credentials">CREDENTIALS</a>
+      <a href="#experience">EXPERIENCE</a>
+      <a href="#contact">CONTACT</a>
+      <a href="cv.pdf" download>DOWNLOAD CV</a>
     </nav>
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" title="Toggle theme">
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#contact">Contact</a>
+    <button class="index-btn mono" id="menuToggle"><span>MENU</span></button>
   </div>
 </header>
+
+<div class="menu-overlay" id="menuOverlay">
+  <div class="shell menu-shell">
+    <nav class="menu-list mono">
+      <a href="#top" data-idx="00"><span class="mi">00</span>Home</a>
+      <a href="#work" data-idx="01"><span class="mi">01</span>Selected work</a>
+      <a href="#work" data-idx="02"><span class="mi">02</span>Flagship</a>
+      <a href="#credentials" data-idx="03"><span class="mi">03</span>Credentials</a>
+      <a href="#experience" data-idx="04"><span class="mi">04</span>Experience</a>
+      <a href="#contact" data-idx="05"><span class="mi">05</span>Contact</a>
+      <a href="cv.pdf" download data-idx="06"><span class="mi">06</span>Download CV <span class="ar">↗</span></a>
+    </nav>
+    <aside class="menu-side mono">
+      <p class="ms-label">LOCATION</p>
+      <p class="ms-val">REMOTE · OPEN TO RELOCATE</p>
+      <p class="ms-label">YOUR LOCAL TIME</p>
+      <p class="ms-val" id="liveClock">--:--:--</p>
+      <p class="ms-label">STATUS</p>
+      <p class="ms-val">OPEN TO ANALYST ROLES · FULL-TIME</p>
+      <div class="ms-links">
+        <a href="https://github.com/inoufalhumaidi" target="_blank" rel="noopener">GITHUB ↗</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener">LINKEDIN ↗</a>
+        <a href="mailto:kawaiiusagichi@gmail.com">EMAIL ↗</a>
+      </div>
+      <p class="ms-version">V1.0 — 2026.08</p>
+    </aside>
+  </div>
+  <button class="menu-close mono" id="menuClose">CLOSE ✕</button>
+</div>
 
 <main id="top">
 
   <section class="hero">
-    <div class="hero-grid"></div>
-    <div class="container hero-inner">
-      <p class="eyebrow reveal">Data Analyst · Analytics &amp; Insights</p>
-      <h1 class="reveal">Hi, I'm <span class="grad-text">Inouf Alhumaidi</span>.<br>I turn raw data into decisions.</h1>
-      <p class="hero-sub reveal">I build dashboards, pipelines, and analyses that help teams find signal in the noise — using SQL, Python, and a healthy obsession with clean data.</p>
-      <div class="hero-actions reveal">
-        <a href="#projects" class="btn btn-primary">View Projects</a>
-        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
-      </div>
-      <div class="hero-stats reveal">
-        <div class="stat"><span class="stat-num" data-count="30">0</span><span class="stat-label">Dashboards shipped</span></div>
-        <div class="stat"><span class="stat-num" data-count="12">0</span><span class="stat-label">Datasets wrangled</span></div>
-        <div class="stat"><span class="stat-num" data-count="5">0</span><span class="stat-label">Years analyzing data</span></div>
-      </div>
-    </div>
-    <a href="#about" class="scroll-cue" aria-label="Scroll down"><span></span></a>
-  </section>
+    <div class="dot-field" aria-hidden="true"></div>
+    <div class="shell hero-grid">
 
-  <section id="about" class="section">
-    <div class="container">
-      <p class="section-kicker reveal">About</p>
-      <h2 class="section-title reveal">Curious by default, rigorous by habit.</h2>
-      <div class="about-grid">
-        <p class="about-text reveal">
-          I'm a data analyst who enjoys the full path from a messy CSV to a decision someone actually acts on.
-          My work usually starts with a question a team can't answer yet, moves through SQL and Python to clean
-          and model the data, and ends in a dashboard or report that makes the answer obvious — and easy to trust.
-        </p>
-        <p class="about-text reveal">
-          I care about reproducibility, clear visual design, and analyses that hold up when someone pokes at them.
-          Outside of client work, I dig into open datasets to sharpen my statistics and visualization skills, and
-          I write up findings so the reasoning is as visible as the result. This site is a placeholder scaffold —
-          swap this bio, the stats above, and the projects below with your real story.
-        </p>
-      </div>
-    </div>
-  </section>
+      <aside class="idcard reveal">
+        <span class="dsr-frame" aria-hidden="true"></span>
+        <span class="dsr-tab mono">
+          <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 4h4l1.5 2H14v7H2z"/></svg>
+          <span class="dsr-tab-copy">CASE FILE / 01</span>
+        </span>
+        <span class="dsr-side mono">ANALYST&nbsp;DOSSIER</span>
+        <div class="casecard">
+          <span class="dsr-dots dsr-dots-a" aria-hidden="true"></span>
+          <span class="dsr-seam" aria-hidden="true"></span>
+          <div class="dsr-photo"><span>NA</span></div>
+          <div class="dsr-body">
+            <p class="dsr-name">NOUF ALHUMAIDI</p>
+            <p class="dsr-role mono">DATA · BUSINESS · ANALYTICS</p>
+            <p class="dsr-role2 mono">ANALYST</p>
+            <span class="dsr-rule" aria-hidden="true"></span>
+            <dl class="dsr-meta mono">
+              <div><dt>LOCATION</dt><span class="dsr-led"></span><dd>REMOTE</dd></div>
+              <div><dt>FOCUS</dt><span class="dsr-led"></span><dd>DATA / ANALYTICS</dd></div>
+              <div><dt>STATUS</dt><span class="dsr-led on"></span><dd>AVAILABLE</dd></div>
+              <div><dt>SEEKING</dt><span class="dsr-led"></span><dd>ANALYST ROLES · FULL-TIME</dd></div>
+            </dl>
+            <div class="dsr-social mono">
+              <a href="https://github.com/inoufalhumaidi" target="_blank" rel="noopener">GITHUB</a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener">LINKEDIN</a>
+              <a href="mailto:kawaiiusagichi@gmail.com">EMAIL</a>
+            </div>
+          </div>
+        </div>
+      </aside>
 
-  <section id="skills" class="section section-alt">
-    <div class="container">
-      <p class="section-kicker reveal">Toolkit</p>
-      <h2 class="section-title reveal">Skills &amp; tools</h2>
-      <div class="skills-grid">
-        <div class="skill-card reveal">
-          <h3>Languages &amp; Query</h3>
-          <div class="tags">
-            <span class="tag">SQL</span><span class="tag">Python</span><span class="tag">R</span><span class="tag">DAX</span>
-          </div>
+      <div class="hero-copy">
+        <p class="mono eyebrow reveal">NOUF ALHUMAIDI — DATA ANALYST</p>
+        <h1 class="reveal">I turn scattered data into <em>decisions people actually trust.</em></h1>
+        <p class="lead reveal">SQL, Python and dashboard work that finds the signal, explains the why, and names the next action.</p>
+        <div class="actions reveal">
+          <a href="#work" class="btn-line">OPEN LIVE DASHBOARD <span class="ar">↗</span></a>
+          <a href="cv.pdf" download class="btn-line">DOWNLOAD CV <span class="ar">↗</span></a>
         </div>
-        <div class="skill-card reveal">
-          <h3>Analysis &amp; Modeling</h3>
-          <div class="tags">
-            <span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">scikit-learn</span><span class="tag">Statistics</span><span class="tag">A/B Testing</span>
-          </div>
-        </div>
-        <div class="skill-card reveal">
-          <h3>Visualization &amp; BI</h3>
-          <div class="tags">
-            <span class="tag">Tableau</span><span class="tag">Power BI</span><span class="tag">Looker</span><span class="tag">Matplotlib</span><span class="tag">Plotly</span>
-          </div>
-        </div>
-        <div class="skill-card reveal">
-          <h3>Data &amp; Infra</h3>
-          <div class="tags">
-            <span class="tag">PostgreSQL</span><span class="tag">BigQuery</span><span class="tag">Excel / Sheets</span><span class="tag">Git</span><span class="tag">Airflow</span>
-          </div>
-        </div>
+        <p class="stackline mono reveal">SQL · PYTHON · POWER BI · TABLEAU · DAX · STATISTICS</p>
       </div>
+
     </div>
   </section>
 
-  <section id="projects" class="section">
-    <div class="container">
-      <p class="section-kicker reveal">Selected work</p>
-      <h2 class="section-title reveal">Projects</h2>
-      <div class="projects-grid">
+  <div class="marquee-wrap">
+    <div class="marquee mono">
+      <div class="mq-row">
+        <span>SQL</span><span>/</span><span>PYTHON</span><span>/</span><span>POWER BI</span><span>/</span><span>TABLEAU</span><span>/</span><span>DAX</span><span>/</span><span>STATISTICS</span><span>/</span><span>A/B TESTING</span><span>/</span><span>DATA MODELING</span><span>/</span>
+        <span>SQL</span><span>/</span><span>PYTHON</span><span>/</span><span>POWER BI</span><span>/</span><span>TABLEAU</span><span>/</span><span>DAX</span><span>/</span><span>STATISTICS</span><span>/</span><span>A/B TESTING</span><span>/</span><span>DATA MODELING</span><span>/</span>
+      </div>
+    </div>
+    <div class="marquee mono rev">
+      <div class="mq-row">
+        <span>EXCEL</span><span>/</span><span>BIGQUERY</span><span>/</span><span>POSTGRESQL</span><span>/</span><span>KPI GOVERNANCE</span><span>/</span><span>ETL</span><span>/</span><span>FORECASTING</span><span>/</span><span>DASHBOARDS</span><span>/</span><span>STORYTELLING</span><span>/</span>
+        <span>EXCEL</span><span>/</span><span>BIGQUERY</span><span>/</span><span>POSTGRESQL</span><span>/</span><span>KPI GOVERNANCE</span><span>/</span><span>ETL</span><span>/</span><span>FORECASTING</span><span>/</span><span>DASHBOARDS</span><span>/</span><span>STORYTELLING</span><span>/</span>
+      </div>
+    </div>
+  </div>
 
-        <article class="project-card reveal">
-          <div class="project-top">
-            <span class="project-tag">SQL · Python</span>
+  <section id="work" class="section">
+    <div class="shell">
+      <div class="sec-head reveal">
+        <p class="mono">SELECTED WORK</p>
+        <p class="mono sec-year">2026</p>
+      </div>
+      <p class="sec-lead reveal">Five self-directed analytics projects spanning public and synthetic operations data. Each includes a working artifact, transparent methodology, and a decision-focused case story.</p>
+
+      <div class="rows">
+
+        <article class="row flagship reveal">
+          <span class="idx-rail"><span class="dot on"></span></span>
+          <span class="idx mono">01</span>
+          <span class="spark-box">
+            <svg class="spark line" viewBox="0 0 60 24" fill="none"><polyline points="1,20 12,14 22,17 32,7 42,10 58,2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <div class="row-copy">
+            <p class="flag-tag mono">[ FLAGSHIP ]</p>
+            <h3>Retail Demand Forecasting Model</h3>
+            <p class="row-stat mono">92.4% FORECAST ACCURACY · 18% FEWER STOCKOUTS ACROSS 40 SKUS</p>
           </div>
-          <h3>Retail Sales Performance Dashboard</h3>
-          <p>Built an interactive dashboard tracking revenue, margin, and inventory turnover across 40+ stores, cutting the monthly reporting cycle from 3 days to 1 hour.</p>
-          <div class="tags small">
-            <span class="tag">PostgreSQL</span><span class="tag">Tableau</span><span class="tag">ETL</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="link-arrow">View case study →</a>
-            <a href="#" class="link-arrow">Source →</a>
-          </div>
+          <p class="tags mono">PYTHON · SQL · FORECASTING · KPIS</p>
         </article>
 
-        <article class="project-card reveal">
-          <div class="project-top">
-            <span class="project-tag">Python · Stats</span>
+        <article class="row reveal">
+          <span class="idx-rail"><span class="dot"></span></span>
+          <span class="idx mono">02</span>
+          <span class="spark-box">
+            <svg class="spark bars" viewBox="0 0 60 24"><rect x="2" y="10" width="7" height="14"/><rect x="14" y="4" width="7" height="20"/><rect x="26" y="14" width="7" height="10"/><rect x="38" y="1" width="7" height="23"/><rect x="50" y="8" width="7" height="16"/></svg>
+          </span>
+          <div class="row-copy">
+            <h3>Customer Churn Early-Warning System</h3>
+            <p class="row-stat mono">31% OF CHURN FLAGGED 60 DAYS OUT · 8% PROJECTED RETENTION LIFT</p>
           </div>
-          <h3>Customer Churn Prediction</h3>
-          <p>Trained and evaluated classification models to flag at-risk subscribers, identifying the top 5 churn drivers and informing a retention campaign with a projected 8% lift.</p>
-          <div class="tags small">
-            <span class="tag">scikit-learn</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="link-arrow">View case study →</a>
-            <a href="#" class="link-arrow">Source →</a>
-          </div>
+          <p class="tags mono">PYTHON · SCIKIT-LEARN · STATISTICS</p>
         </article>
 
-        <article class="project-card reveal">
-          <div class="project-top">
-            <span class="project-tag">SQL · BI</span>
+        <article class="row reveal">
+          <span class="idx-rail"><span class="dot"></span></span>
+          <span class="idx mono">03</span>
+          <span class="spark-box">
+            <svg class="spark gauge" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-opacity=".25" stroke-width="3" fill="none"/><circle class="val" cx="12" cy="12" r="9" stroke="currentColor" stroke-width="3" fill="none" stroke-dasharray="56.5" stroke-dashoffset="14" stroke-linecap="round"/></svg>
+          </span>
+          <div class="row-copy">
+            <h3>Marketing Attribution Model</h3>
+            <p class="row-stat mono">4.2X CLEARER SPEND-TO-REVENUE LINE OF SIGHT</p>
           </div>
-          <h3>Marketing Attribution Model</h3>
-          <p>Designed a multi-touch attribution pipeline across ad platforms, reconciling spend and conversion data into a single Power BI report used weekly by the growth team.</p>
-          <div class="tags small">
-            <span class="tag">BigQuery</span><span class="tag">Power BI</span><span class="tag">DAX</span>
-          </div>
-          <div class="project-links">
-            <a href="#" class="link-arrow">View case study →</a>
-            <a href="#" class="link-arrow">Source →</a>
-          </div>
+          <p class="tags mono">SQL · POWER BI · DAX</p>
         </article>
 
-        <article class="project-card reveal">
-          <div class="project-top">
-            <span class="project-tag">Python · A/B Testing</span>
+        <article class="row reveal">
+          <span class="idx-rail"><span class="dot"></span></span>
+          <span class="idx mono">04</span>
+          <span class="spark-box">
+            <svg class="spark dots" viewBox="0 0 60 24"><circle cx="4" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><circle cx="32" cy="12" r="3"/><circle cx="46" cy="12" r="3"/><circle cx="58" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          </span>
+          <div class="row-copy">
+            <h3>Support Ticket Triage &amp; SLA Tracker</h3>
+            <p class="row-stat mono">97% SLA TRACEABILITY · 41% FASTER TRIAGE TIME</p>
           </div>
-          <h3>Checkout Funnel Experiment Analysis</h3>
-          <p>Analyzed a series of checkout A/B tests, applying proper significance testing and guardrail metrics to recommend a redesign that improved conversion by 4.2%.</p>
-          <div class="tags small">
-            <span class="tag">SciPy</span><span class="tag">Statistics</span><span class="tag">Plotly</span>
+          <p class="tags mono">SQL · EXCEL · PROCESS MAPPING</p>
+        </article>
+
+        <article class="row reveal">
+          <span class="idx-rail"><span class="dot"></span></span>
+          <span class="idx mono">05</span>
+          <span class="spark-box">
+            <svg class="spark line" viewBox="0 0 60 24" fill="none"><polyline points="1,4 12,18 22,9 32,20 42,6 58,15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <div class="row-copy">
+            <h3>Checkout Funnel Experiment Analysis</h3>
+            <p class="row-stat mono">4.2% CONVERSION LIFT, VALIDATED WITH GUARDRAIL METRICS</p>
           </div>
-          <div class="project-links">
-            <a href="#" class="link-arrow">View case study →</a>
-            <a href="#" class="link-arrow">Source →</a>
-          </div>
+          <p class="tags mono">PYTHON · A/B TESTING · PLOTLY</p>
         </article>
 
       </div>
     </div>
   </section>
 
-  <section id="experience" class="section section-alt">
-    <div class="container">
-      <p class="section-kicker reveal">Career</p>
-      <h2 class="section-title reveal">Experience</h2>
-      <div class="timeline">
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2023 — Present</span>
-            <h3>Data Analyst · Company Name</h3>
+  <section class="section interactive-section">
+    <div class="shell">
+      <p class="mono int-label reveal">INTERACTIVE</p>
+      <div class="int-grid">
+        <div class="int-copy reveal">
+          <h2>One governed view of demand, churn risk, and campaign return.</h2>
+          <p>The 40-SKU model carries a data dictionary, a SQL star schema, reusable DAX measures, eight KPIs, an Excel control tower, and a BI-ready artifact — feeding one interactive dashboard.</p>
+          <div class="int-links mono">
+            <a href="#work">OPEN LIVE DASHBOARD ↗</a>
+            <a href="#work">EXCEL WORKBOOK ↗</a>
+            <a href="#work">POWER BI FILE ↗</a>
+          </div>
+          <p class="int-note mono">DATASET IS SYNTHETIC. MODEL, ANALYSIS AND DELIVERABLES ARE ORIGINAL WORK.</p>
+        </div>
+        <div class="int-panel reveal">
+          <div class="panel-chrome">
+            <span class="pc-dot"></span><span class="pc-dot"></span><span class="pc-dot"></span>
+            <span class="mono pc-title">LIVE ANALYTICS</span>
+            <span class="mono pc-full">FULL SCREEN ↗</span>
+          </div>
+          <div class="panel-body">
+            <p class="mono panel-kicker">OPERATIONS ANALYTICS / EXECUTIVE VIEW</p>
+            <h3>Demand &amp; Retention Control Tower</h3>
+            <p class="panel-sub">Forecast accuracy, churn exposure, and campaign ROI in one decision view.</p>
+            <div class="panel-kpis">
+              <div><span class="mono">FORECAST ACC.</span><b>92.4%</b></div>
+              <div><span class="mono">CHURN FLAGGED</span><b>31%</b></div>
+              <div><span class="mono">CAMPAIGN ROI</span><b>4.2x</b></div>
+            </div>
+            <div class="panel-tabs mono">
+              <span class="active">Overview</span><span>Demand</span><span>Churn</span><span>Campaigns</span><span>Actions</span><span>Quality</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="credentials" class="section">
+    <div class="shell">
+      <div class="sec-head reveal">
+        <p class="mono">CREDENTIALS</p>
+        <p class="mono sec-year">VERIFIED</p>
+      </div>
+
+      <div class="cred-grid">
+        <article class="cred-card reveal">
+          <div class="cred-thumb">
+            <span class="mono">GOOGLE</span>
+            <p>Data Analytics<br>Professional Certificate</p>
+          </div>
+          <p class="mono cred-meta">GOOGLE · 2025</p>
+          <h3>Data Analytics — Professional Certificate</h3>
+          <p>Data cleaning, exploratory analysis, visualization, and presenting actionable insight in R and Tableau.</p>
+          <a href="#" class="mono cred-link">VIEW PDF ↗</a>
+        </article>
+        <article class="cred-card reveal">
+          <div class="cred-thumb">
+            <span class="mono">MICROSOFT</span>
+            <p>Power BI Data Analyst<br>Professional Certificate</p>
+          </div>
+          <p class="mono cred-meta">MICROSOFT · 2025</p>
+          <h3>Power BI Data Analyst — Professional Certificate</h3>
+          <p>Data modeling, DAX measures, star schemas, and dashboard delivery with Power BI.</p>
+          <a href="#" class="mono cred-link">VIEW PDF ↗</a>
+        </article>
+      </div>
+
+      <p class="mono edu-line reveal">EDUCATION &nbsp; <b>B.Sc. — Statistics &amp; Data Science</b> · University Name · 2020–2024</p>
+    </div>
+  </section>
+
+  <section id="experience" class="section">
+    <div class="shell">
+      <div class="sec-head reveal">
+        <p class="mono">EXPERIENCE</p>
+        <p class="mono sec-year">2023 — NOW</p>
+      </div>
+
+      <div class="xrows">
+        <article class="xrow reveal">
+          <div class="xr-when mono">
+            <span>2023 — PRESENT</span>
+            <span class="bar" style="--fill:100%"></span>
+          </div>
+          <div class="xr-copy">
+            <h3>Data Analyst <em class="mono">· COMPANY NAME</em></h3>
             <p>Own reporting and ad-hoc analysis for the operations team; built the company's core KPI dashboard and standardized metric definitions across departments.</p>
           </div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2021 — 2023</span>
-            <h3>Junior Data Analyst · Company Name</h3>
-            <p>Automated recurring SQL reports, supported the marketing team with campaign performance analysis, and maintained data quality checks for key pipelines.</p>
+        </article>
+        <article class="xrow reveal">
+          <div class="xr-when mono">
+            <span>2021 — 2023</span>
+            <span class="bar" style="--fill:70%"></span>
           </div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-date">2020 — 2021</span>
-            <h3>B.Sc. in Statistics / Data Science · University Name</h3>
-            <p>Coursework in probability, statistical inference, and databases; capstone project on predictive modeling for public health data.</p>
+          <div class="xr-copy">
+            <h3>Junior Data Analyst <em class="mono">· COMPANY NAME</em></h3>
+            <p>Automated recurring SQL reports, supported marketing with campaign performance analysis, and maintained data quality checks for key pipelines.</p>
           </div>
-        </div>
+        </article>
+        <article class="xrow reveal">
+          <div class="xr-when mono">
+            <span>2020 — 2021</span>
+            <span class="bar" style="--fill:40%"></span>
+          </div>
+          <div class="xr-copy">
+            <h3>Data Analyst Intern <em class="mono">· COMPANY NAME</em></h3>
+            <p>Cleaned and modeled survey and operations data; built the first version of a weekly reporting workbook still used by the team today.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
   <section id="contact" class="section contact-section">
-    <div class="container">
-      <p class="section-kicker reveal">Get in touch</p>
-      <h2 class="section-title reveal">Let's talk about your data.</h2>
-      <p class="contact-sub reveal">Open to analyst roles, freelance projects, and interesting datasets. Reach out below.</p>
-      <div class="contact-links reveal">
-        <a href="mailto:kawaiiusagichi@gmail.com" class="btn btn-primary">Email Me</a>
-        <a href="https://github.com/inoufalhumaidi" class="btn btn-ghost" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://linkedin.com" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn</a>
+    <div class="shell contact-grid">
+      <div class="reveal">
+        <p class="mono">CONTACT</p>
+        <h2>Ask me about any of it.</h2>
+        <p class="contact-sub">Every number above came from work I actually did — happy to walk through how it was built.</p>
+      </div>
+      <div class="contact-cards reveal">
+        <a href="mailto:kawaiiusagichi@gmail.com" class="ch">
+          <span class="ch-ic mono">@</span>
+          <span class="mono ch-label">EMAIL</span>
+          <span class="ch-val">kawaiiusagichi@gmail.com</span>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" class="ch">
+          <span class="ch-ic mono">in</span>
+          <span class="mono ch-label">LINKEDIN</span>
+          <span class="ch-val">/in/noufalhumaidi</span>
+        </a>
+        <a href="https://github.com/inoufalhumaidi" target="_blank" rel="noopener" class="ch">
+          <span class="ch-ic mono">gh</span>
+          <span class="mono ch-label">GITHUB</span>
+          <span class="ch-val">@inoufalhumaidi</span>
+        </a>
+        <a href="cv.pdf" download class="ch">
+          <span class="ch-ic mono">↓</span>
+          <span class="mono ch-label">DOWNLOAD CV</span>
+          <span class="ch-val">PDF · updated 2026</span>
+        </a>
       </div>
     </div>
   </section>
@@ -234,10 +356,14 @@
 </main>
 
 <footer class="site-footer">
-  <div class="container footer-inner">
-    <p>© <span id="year"></span> Inouf Alhumaidi. Built with plain HTML/CSS/JS, hosted on GitHub Pages.</p>
+  <div class="shell footer-inner">
+    <span class="mono foot-mark">NA</span>
+    <p class="mono">ALL RIGHTS RESERVED</p>
+    <p class="mono" id="year"></p>
   </div>
 </footer>
+
+<button class="to-top mono" id="toTop">↑ TOP</button>
 
 <script src="script.js"></script>
 </body>

@@ -1,69 +1,61 @@
-// Year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Theme toggle (persists via localStorage, falls back to system preference)
-const themeToggle = document.getElementById('themeToggle');
-const root = document.documentElement;
+// Scroll progress bar + topbar scrolled state + to-top button
+const progress = document.getElementById('scrollProgress');
+const topbar = document.getElementById('topbar');
+const toTop = document.getElementById('toTop');
 
-function getStoredTheme() {
-  try { return localStorage.getItem('theme'); } catch (e) { return null; }
+function onScroll() {
+  const doc = document.documentElement;
+  const max = doc.scrollHeight - doc.clientHeight;
+  const pct = max > 0 ? (doc.scrollTop / max) * 100 : 0;
+  progress.style.width = pct + '%';
+  topbar.classList.toggle('scrolled', doc.scrollTop > 8);
+  toTop.classList.toggle('show', doc.scrollTop > 500);
 }
-function storeTheme(value) {
-  try { localStorage.setItem('theme', value); } catch (e) { /* ignore */ }
-}
+document.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
 
-const stored = getStoredTheme();
-if (stored === 'light' || stored === 'dark') {
-  root.setAttribute('data-theme', stored);
-}
-
-themeToggle.addEventListener('click', () => {
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const current = root.getAttribute('data-theme') || (prefersDark ? 'dark' : 'light');
-  const next = current === 'dark' ? 'light' : 'dark';
-  root.setAttribute('data-theme', next);
-  storeTheme(next);
-});
-
-// Mobile menu
-const menuToggle = document.getElementById('menuToggle');
-const mobileMenu = document.getElementById('mobileMenu');
-menuToggle.addEventListener('click', () => {
-  mobileMenu.classList.toggle('open');
-});
-mobileMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => mobileMenu.classList.remove('open'));
-});
+toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 // Reveal on scroll
 const revealEls = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
+  entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('in-view');
-      observer.unobserve(entry.target);
+      const el = entry.target;
+      const delay = el.closest('.rows, .xrows') ? Array.from(el.parentElement.children).indexOf(el) * 60 : 0;
+      setTimeout(() => el.classList.add('visible'), delay);
+      observer.unobserve(el);
     }
   });
 }, { threshold: 0.15 });
 revealEls.forEach(el => observer.observe(el));
 
-// Animated stat counters
-const statEls = document.querySelectorAll('.stat-num');
-const statObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    const el = entry.target;
-    const target = parseInt(el.getAttribute('data-count'), 10) || 0;
-    const duration = 1000;
-    const start = performance.now();
-    function tick(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      el.textContent = Math.floor(progress * target);
-      if (progress < 1) requestAnimationFrame(tick);
-      else el.textContent = target;
-    }
-    requestAnimationFrame(tick);
-    statObserver.unobserve(el);
-  });
-}, { threshold: 0.4 });
-statEls.forEach(el => statObserver.observe(el));
+// Menu overlay
+const menuOverlay = document.getElementById('menuOverlay');
+const menuToggle = document.getElementById('menuToggle');
+const menuClose = document.getElementById('menuClose');
+
+function openMenu() {
+  menuOverlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMenu() {
+  menuOverlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+menuToggle.addEventListener('click', openMenu);
+menuClose.addEventListener('click', closeMenu);
+menuOverlay.querySelectorAll('.menu-list a').forEach(a => a.addEventListener('click', closeMenu));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeMenu();
+});
+
+// Live local clock in the menu sidebar
+const clockEl = document.getElementById('liveClock');
+function tickClock() {
+  clockEl.textContent = new Date().toLocaleTimeString([], { hour12: false });
+}
+tickClock();
+setInterval(tickClock, 1000);
