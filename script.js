@@ -208,31 +208,55 @@ if (panelFullscreen) {
   });
 }
 
-// Case studies carousel: auto-advances horizontally, with dot/arrow toggles
+// Case studies carousel: auto-advances horizontally, with dot/arrow toggles.
+// A cloned first slide is appended so autoplay/next can always animate
+// forward (like the marquee's continuous crawl) instead of snapping
+// backward through the deck when it loops.
 const credCarousel = document.getElementById('credCarousel');
 if (credCarousel) {
   const track = document.getElementById('credTrack');
-  const pages = credCarousel.querySelectorAll('.carousel-page');
   const dots = credCarousel.querySelectorAll('.dot');
   const prevBtn = document.getElementById('credPrev');
   const nextBtn = document.getElementById('credNext');
+  const realCount = track.querySelectorAll('.carousel-page').length;
+  const clone = track.firstElementChild.cloneNode(true);
+  clone.setAttribute('aria-hidden', 'true');
+  track.appendChild(clone);
+
   let current = 0;
   let timer = null;
 
-  function goTo(i) {
-    current = (i + pages.length) % pages.length;
+  function render(instant) {
+    track.style.transition = instant ? 'none' : '';
     track.style.transform = `translateX(-${current * 100}%)`;
-    dots.forEach((d, idx) => d.classList.toggle('active', idx === current));
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === current % realCount));
+  }
+  function goForward() {
+    current += 1;
+    render(false);
+    if (current === realCount) {
+      track.addEventListener('transitionend', function onEnd(e) {
+        if (e.propertyName !== 'transform') return;
+        track.removeEventListener('transitionend', onEnd);
+        current = 0;
+        render(true);
+        track.offsetHeight; // flush the instant jump before re-enabling transitions
+      });
+    }
+  }
+  function goTo(i) {
+    current = (i + realCount) % realCount;
+    render(false);
   }
   function startAutoplay() {
-    timer = setInterval(() => goTo(current + 1), 4500);
+    timer = setInterval(goForward, 3400);
   }
   function resetAutoplay() {
     clearInterval(timer);
     startAutoplay();
   }
   prevBtn.addEventListener('click', () => { goTo(current - 1); resetAutoplay(); });
-  nextBtn.addEventListener('click', () => { goTo(current + 1); resetAutoplay(); });
+  nextBtn.addEventListener('click', () => { goForward(); resetAutoplay(); });
   dots.forEach((dot, idx) => dot.addEventListener('click', () => { goTo(idx); resetAutoplay(); }));
   credCarousel.addEventListener('mouseenter', () => clearInterval(timer));
   credCarousel.addEventListener('mouseleave', startAutoplay);
