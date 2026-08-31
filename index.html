@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inouf Alhumaidi — Data Analyst</title>
+<meta name="description" content="Portfolio of Inouf Alhumaidi, Data Analyst — projects, skills, and experience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="noise"></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">IA<span class="dot">.</span></a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme" title="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="container hero-inner">
+      <p class="eyebrow reveal">Data Analyst · Analytics &amp; Insights</p>
+      <h1 class="reveal">Hi, I'm <span class="grad-text">Inouf Alhumaidi</span>.<br>I turn raw data into decisions.</h1>
+      <p class="hero-sub reveal">I build dashboards, pipelines, and analyses that help teams find signal in the noise — using SQL, Python, and a healthy obsession with clean data.</p>
+      <div class="hero-actions reveal">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+      </div>
+      <div class="hero-stats reveal">
+        <div class="stat"><span class="stat-num" data-count="30">0</span><span class="stat-label">Dashboards shipped</span></div>
+        <div class="stat"><span class="stat-num" data-count="12">0</span><span class="stat-label">Datasets wrangled</span></div>
+        <div class="stat"><span class="stat-num" data-count="5">0</span><span class="stat-label">Years analyzing data</span></div>
+      </div>
+    </div>
+    <a href="#about" class="scroll-cue" aria-label="Scroll down"><span></span></a>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container">
+      <p class="section-kicker reveal">About</p>
+      <h2 class="section-title reveal">Curious by default, rigorous by habit.</h2>
+      <div class="about-grid">
+        <p class="about-text reveal">
+          I'm a data analyst who enjoys the full path from a messy CSV to a decision someone actually acts on.
+          My work usually starts with a question a team can't answer yet, moves through SQL and Python to clean
+          and model the data, and ends in a dashboard or report that makes the answer obvious — and easy to trust.
+        </p>
+        <p class="about-text reveal">
+          I care about reproducibility, clear visual design, and analyses that hold up when someone pokes at them.
+          Outside of client work, I dig into open datasets to sharpen my statistics and visualization skills, and
+          I write up findings so the reasoning is as visible as the result. This site is a placeholder scaffold —
+          swap this bio, the stats above, and the projects below with your real story.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <p class="section-kicker reveal">Toolkit</p>
+      <h2 class="section-title reveal">Skills &amp; tools</h2>
+      <div class="skills-grid">
+        <div class="skill-card reveal">
+          <h3>Languages &amp; Query</h3>
+          <div class="tags">
+            <span class="tag">SQL</span><span class="tag">Python</span><span class="tag">R</span><span class="tag">DAX</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <h3>Analysis &amp; Modeling</h3>
+          <div class="tags">
+            <span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">scikit-learn</span><span class="tag">Statistics</span><span class="tag">A/B Testing</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <h3>Visualization &amp; BI</h3>
+          <div class="tags">
+            <span class="tag">Tableau</span><span class="tag">Power BI</span><span class="tag">Looker</span><span class="tag">Matplotlib</span><span class="tag">Plotly</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <h3>Data &amp; Infra</h3>
+          <div class="tags">
+            <span class="tag">PostgreSQL</span><span class="tag">BigQuery</span><span class="tag">Excel / Sheets</span><span class="tag">Git</span><span class="tag">Airflow</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <div class="container">
+      <p class="section-kicker reveal">Selected work</p>
+      <h2 class="section-title reveal">Projects</h2>
+      <div class="projects-grid">
+
+        <article class="project-card reveal">
+          <div class="project-top">
+            <span class="project-tag">SQL · Python</span>
+          </div>
+          <h3>Retail Sales Performance Dashboard</h3>
+          <p>Built an interactive dashboard tracking revenue, margin, and inventory turnover across 40+ stores, cutting the monthly reporting cycle from 3 days to 1 hour.</p>
+          <div class="tags small">
+            <span class="tag">PostgreSQL</span><span class="tag">Tableau</span><span class="tag">ETL</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="link-arrow">View case study →</a>
+            <a href="#" class="link-arrow">Source →</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-top">
+            <span class="project-tag">Python · Stats</span>
+          </div>
+          <h3>Customer Churn Prediction</h3>
+          <p>Trained and evaluated classification models to flag at-risk subscribers, identifying the top 5 churn drivers and informing a retention campaign with a projected 8% lift.</p>
+          <div class="tags small">
+            <span class="tag">scikit-learn</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="link-arrow">View case study →</a>
+            <a href="#" class="link-arrow">Source →</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-top">
+            <span class="project-tag">SQL · BI</span>
+          </div>
+          <h3>Marketing Attribution Model</h3>
+          <p>Designed a multi-touch attribution pipeline across ad platforms, reconciling spend and conversion data into a single Power BI report used weekly by the growth team.</p>
+          <div class="tags small">
+            <span class="tag">BigQuery</span><span class="tag">Power BI</span><span class="tag">DAX</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="link-arrow">View case study →</a>
+            <a href="#" class="link-arrow">Source →</a>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-top">
+            <span class="project-tag">Python · A/B Testing</span>
+          </div>
+          <h3>Checkout Funnel Experiment Analysis</h3>
+          <p>Analyzed a series of checkout A/B tests, applying proper significance testing and guardrail metrics to recommend a redesign that improved conversion by 4.2%.</p>
+          <div class="tags small">
+            <span class="tag">SciPy</span><span class="tag">Statistics</span><span class="tag">Plotly</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="link-arrow">View case study →</a>
+            <a href="#" class="link-arrow">Source →</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="section section-alt">
+    <div class="container">
+      <p class="section-kicker reveal">Career</p>
+      <h2 class="section-title reveal">Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2023 — Present</span>
+            <h3>Data Analyst · Company Name</h3>
+            <p>Own reporting and ad-hoc analysis for the operations team; built the company's core KPI dashboard and standardized metric definitions across departments.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2021 — 2023</span>
+            <h3>Junior Data Analyst · Company Name</h3>
+            <p>Automated recurring SQL reports, supported the marketing team with campaign performance analysis, and maintained data quality checks for key pipelines.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date">2020 — 2021</span>
+            <h3>B.Sc. in Statistics / Data Science · University Name</h3>
+            <p>Coursework in probability, statistical inference, and databases; capstone project on predictive modeling for public health data.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <p class="section-kicker reveal">Get in touch</p>
+      <h2 class="section-title reveal">Let's talk about your data.</h2>
+      <p class="contact-sub reveal">Open to analyst roles, freelance projects, and interesting datasets. Reach out below.</p>
+      <div class="contact-links reveal">
+        <a href="mailto:kawaiiusagichi@gmail.com" class="btn btn-primary">Email Me</a>
+        <a href="https://github.com/inoufalhumaidi" class="btn btn-ghost" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Inouf Alhumaidi. Built with plain HTML/CSS/JS, hosted on GitHub Pages.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
