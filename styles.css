@@ -175,7 +175,25 @@ a { color: inherit; text-decoration: none; }
   z-index: 0;
 }
 .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 380px 1fr; gap: 64px; align-items: start; }
-@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
+/* mobile stand-in for the dossier card: shown only once the card itself is
+   hidden below the hero-grid breakpoint */
+.hero-avatar { display: none; }
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  /* the dossier card is a desktop-only flourish; a circular portrait stands in for it */
+  .idcard { display: none; }
+  .hero-avatar {
+    display: block; position: relative; overflow: hidden;
+    width: min(160px, 46vw); height: min(160px, 46vw); margin: 0 0 20px;
+    border-radius: 50%; border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--line));
+    background: radial-gradient(60% 55% at 50% 62%, color-mix(in srgb, var(--accent) 30%, transparent), transparent 72%), var(--surface-2);
+    box-shadow: 0 8px 20px -6px color-mix(in srgb, var(--ink) 35%, transparent);
+  }
+  .hero-avatar img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    pointer-events: none; user-select: none;
+  }
+}
 
 /* dossier id card */
 .idcard { position: relative; }
@@ -183,10 +201,23 @@ a { color: inherit; text-decoration: none; }
   position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
   overflow: hidden; box-shadow: 0 18px 40px -24px color-mix(in srgb, var(--ink) 35%, transparent);
 }
+/* registration-mark bracket, bottom-left of the card, pairs diagonally with
+   the photo's own corner mark (.dsr-photo::after) top-right */
+.dsr-frame { position: absolute; inset: 0; pointer-events: none; z-index: 6; }
+.dsr-frame::before {
+  content: ""; position: absolute; width: 14px; height: 14px;
+  left: 12px; bottom: 12px; opacity: .7;
+  border-left: 1px solid var(--accent); border-bottom: 1px solid var(--accent);
+}
 .dsr-dots-a {
   position: absolute; inset: 0 0 auto 0; height: 60px;
   background-image: radial-gradient(color-mix(in srgb, var(--accent-3) 60%, transparent) 1px, transparent 1px);
   background-size: 10px 10px; opacity: .5; pointer-events: none;
+}
+.dsr-dots-b {
+  position: absolute; z-index: 2; right: 14px; top: 88px; width: 50px; height: 50px;
+  background-image: radial-gradient(color-mix(in srgb, var(--surface) 70%, transparent) 1px, transparent 1px);
+  background-size: 9px 9px; opacity: .35; pointer-events: none;
 }
 .dsr-seam { position: absolute; left: 0; right: 0; top: 148px; height: 1px; background: var(--line); }
 .dsr-photo {
@@ -197,11 +228,17 @@ a { color: inherit; text-decoration: none; }
 /* if profile-photo.jpg exists it covers the initials underneath; if it 404s the
    onerror handler hides it and the gradient + initials placeholder shows through */
 .dsr-photo img { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; }
+/* corner mark, top-right of the photo — the other half of the registration-mark pair */
+.dsr-photo::after {
+  content: ""; position: absolute; z-index: 2; right: 10px; top: 10px; width: 12px; height: 12px; opacity: .65;
+  border-right: 1px solid var(--surface); border-top: 1px solid var(--surface);
+}
 .dsr-body { padding: 20px 22px 24px; }
 .dsr-name { font-family: var(--display); font-weight: 900; font-size: 1.3rem; margin: 0; letter-spacing: -.01em; }
 .dsr-role { margin: 6px 0 0; font-size: 10.5px; letter-spacing: .08em; color: var(--accent); font-weight: 600; }
 .dsr-role2 { margin: 2px 0 0; font-size: 10.5px; letter-spacing: .08em; color: var(--muted); }
-.dsr-rule { display: block; height: 1px; background: var(--line); margin: 16px 0 14px; }
+.dsr-rule { position: relative; display: block; height: 1px; background: var(--line); margin: 16px 0 14px; }
+.dsr-rule::before { content: ""; position: absolute; left: 0; top: -1px; width: 28px; height: 3px; background: var(--accent); }
 .dsr-meta { margin: 0; }
 .dsr-meta div { display: flex; align-items: center; gap: 8px; padding: 6px 0; font-size: 11px; }
 .dsr-ic { flex: none; display: inline-flex; width: 14px; height: 14px; color: var(--accent); }
@@ -210,9 +247,18 @@ a { color: inherit; text-decoration: none; }
 .dsr-led { width: 5px; height: 5px; border-radius: 50%; background: var(--faint); flex: 0 0 auto; }
 .dsr-led.on { background: var(--accent-2); box-shadow: 0 0 6px color-mix(in srgb, var(--accent-2) 70%, transparent); animation: blink 1.8s steps(1) infinite; }
 .dsr-meta dd { margin: 0; margin-left: auto; font-weight: 600; text-align: right; }
-.dsr-social { display: flex; gap: 16px; margin-top: 18px; }
-.dsr-social a { font-size: 10.5px; letter-spacing: .06em; color: var(--muted); transition: color .15s; }
+.dsr-social {
+  display: flex; align-items: stretch; margin-top: 18px; padding-top: 14px;
+  border-top: 1px solid color-mix(in srgb, var(--accent) 22%, var(--line));
+}
+.dsr-social a {
+  flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 5px;
+  font-size: 10.5px; letter-spacing: .06em; color: var(--muted); transition: color .15s;
+}
+.dsr-social a + a { border-left: 1px solid color-mix(in srgb, var(--accent) 18%, var(--line)); }
 .dsr-social a:hover { color: var(--accent); }
+.dsr-social a:hover .ar { transform: translate(2px, -2px); }
+
 @keyframes blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: .25; } }
 
 /* hero copy */
