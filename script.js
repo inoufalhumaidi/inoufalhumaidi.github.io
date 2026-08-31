@@ -1,5 +1,9 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// Safe default so any code can flag a "working" moment; the real
+// implementation (bottom of this file) overrides it on fine-pointer devices.
+window.cursorPulseWorking = function () {};
+
 // Scroll progress bar + topbar scrolled state + to-top button
 const progress = document.getElementById('scrollProgress');
 const topbar = document.getElementById('topbar');
@@ -110,6 +114,7 @@ caseToggles.forEach((btn) => {
       setCase(other, document.getElementById(other.getAttribute('aria-controls')), false);
     });
     setCase(btn, panel, willOpen);
+    if (willOpen) window.cursorPulseWorking(420);
   });
 });
 
@@ -154,6 +159,7 @@ if (panelTabs) {
       btn.classList.add('active');
       const data = panelData[btn.dataset.tab];
       body.classList.add('switching');
+      window.cursorPulseWorking(220);
       setTimeout(() => {
         kickerEl.innerHTML = data.kicker;
         titleEl.innerHTML = data.title;
@@ -313,6 +319,7 @@ if (skillButtons.length) {
     bubbleList.innerHTML = renderItems(data.items);
     bubbleBackdrop.classList.add('open');
     bubble.classList.add('open');
+    window.cursorPulseWorking(240);
 
     // position near the clicked title, clamped inside the viewport
     const rect = btn.getBoundingClientRect();
@@ -340,4 +347,73 @@ if (skillButtons.length) {
     closeBubble();
   });
 }
+
+// Custom cursor: normal / working / link / expand, built from an extracted
+// Cinnamoroll cursor pack (assets/cursors/*-sprite.png — see README there for
+// how the frames were pulled out of the original .ani files). Desktop/mouse
+// only; touch devices keep the system default untouched.
+(function () {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  const el = document.getElementById('customCursor');
+  if (!el) return;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const MODES = {
+    normal: { frameCount: 2, seq: [0, 0, 0, 0, 0, 0, 1], stepMs: 1000 / 6 },
+    link: { frameCount: 3, seq: [0, 0, 1, 1, 0, 0, 2, 1], stepMs: 1000 / 6 },
+    working: { frameCount: 11, seq: null, stepMs: 1000 / 12 },
+    expand: { frameCount: 2, seq: [0, 0, 0, 0, 0, 0, 1], stepMs: 1000 / 6 },
+  };
+
+  document.documentElement.classList.add('has-custom-cursor');
+
+  let currentMode = null;
+  let timer = null;
+  let step = 0;
+  let workingUntil = 0;
+
+  function setMode(mode) {
+    if (mode === currentMode) return;
+    currentMode = mode;
+    el.className = 'custom-cursor mode-' + mode;
+    clearInterval(timer);
+    step = 0;
+    el.style.backgroundPositionX = '0px';
+    const m = MODES[mode];
+    if (reduced || m.frameCount <= 1) return;
+    timer = setInterval(() => {
+      step = (step + 1) % (m.seq ? m.seq.length : m.frameCount);
+      const frame = m.seq ? m.seq[step] : step;
+      el.style.backgroundPositionX = (-frame * 48) + 'px';
+    }, m.stepMs);
+  }
+  setMode('normal');
+
+  document.addEventListener('mousemove', (e) => {
+    el.style.transform = `translate3d(${e.clientX}px, ${e.clientY - 8}px, 0)`;
+  }, { passive: true });
+
+  const EXPAND_SELECTOR = '.idcard, .cred-card, .dsr-photo, .carousel-page';
+  const LINK_SELECTOR = 'a, button, [role="button"], [role="tab"], .mq-skill, .carousel-arrow, .dot, .row, .ct-tab';
+
+  document.addEventListener('mouseover', (e) => {
+    if (performance.now() < workingUntil) return; // let a working pulse finish
+    if (e.target.closest(EXPAND_SELECTOR)) { setMode('expand'); return; }
+    if (e.target.closest(LINK_SELECTOR)) { setMode('link'); return; }
+    setMode('normal');
+  });
+  document.addEventListener('mouseout', (e) => {
+    if (!e.relatedTarget) setMode('normal');
+  });
+
+  // Brief "working" pulse for async-feeling moments (accordion open, tab
+  // swap, skill bubble) — called via window.cursorPulseWorking elsewhere.
+  window.cursorPulseWorking = function (ms) {
+    workingUntil = performance.now() + ms;
+    setMode('working');
+    setTimeout(() => {
+      if (performance.now() >= workingUntil) setMode('normal');
+    }, ms);
+  };
+})();
 
