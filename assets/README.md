@@ -18,20 +18,23 @@ If you'd rather use different filenames, that's fine too — just update the mat
 
 ## Case studies (Selected work section)
 
-Each project has a write-up PDF and one supporting file (a workbook, notebook, or
-Power BI file — whatever you actually built).
+Each project's "Open dashboard" link points at one of these files, plus one
+supporting file (a workbook, notebook, or Power BI file — whatever you actually
+built). Project 01 is the exception — its "Open dashboard" jumps straight to the
+Flagship section's live mockup instead of a file, since that's the one project
+with a real interactive dashboard on the page.
 
 | Filename | Project |
 |---|---|
-| `case-study-01-retail-demand-forecasting.pdf` | 01 · Retail Demand Forecasting Model |
+| `case-study-01-retail-demand-forecasting.pdf` | 01 · Retail Demand Forecasting Model (not currently linked — "Open dashboard" points at Flagship instead; keep this file only if you want a separate write-up somewhere) |
 | `case-study-01-workbook.xlsx` | ↳ its Excel workbook |
-| `case-study-02-churn-early-warning.pdf` | 02 · Customer Churn Early-Warning System |
+| `case-study-02-churn-early-warning.pdf` | 02 · Customer Churn Early-Warning System — "Open dashboard" |
 | `case-study-02-notebook.pdf` | ↳ its model notebook (export your .ipynb to PDF so it opens directly in the browser) |
-| `case-study-03-marketing-attribution.pdf` | 03 · Marketing Attribution Model |
+| `case-study-03-marketing-attribution.pdf` | 03 · Marketing Attribution Model — "Open dashboard" |
 | `case-study-03-power-bi-file.pbix` | ↳ its Power BI file |
-| `case-study-04-support-ticket-sla.pdf` | 04 · Support Ticket Triage & SLA Tracker |
+| `case-study-04-support-ticket-sla.pdf` | 04 · Support Ticket Triage & SLA Tracker — "Open dashboard" |
 | `case-study-04-workbook.xlsx` | ↳ its Excel workbook |
-| `case-study-05-checkout-funnel.pdf` | 05 · Checkout Funnel Experiment Analysis |
+| `case-study-05-checkout-funnel.pdf` | 05 · Checkout Funnel Experiment Analysis — "Open dashboard" |
 | `case-study-05-notebook.pdf` | ↳ its notebook |
 
 ## Flagship dashboard
@@ -45,6 +48,9 @@ Note: "Open live dashboard" doesn't need a file — it opens the on-page mockup 
 (and its "Full screen" button), since there's no separately-hosted dashboard app.
 
 ## Certificates (Case Studies carousel)
+
+Clicking a card (not its button) opens an enlarged showcase view of the same
+card. Its "Open dashboard" button uses these files:
 
 | Filename | Certificate |
 |---|---|

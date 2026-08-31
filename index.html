@@ -42,11 +42,6 @@
 
       <aside class="idcard reveal">
         <span class="dsr-frame" aria-hidden="true"></span>
-        <span class="dsr-tab mono">
-          <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 4h4l1.5 2H14v7H2z"/></svg>
-          <span class="dsr-tab-copy">CASE FILE / 01</span>
-        </span>
-        <span class="dsr-side mono">ANALYST&nbsp;DOSSIER</span>
         <div class="casecard">
           <span class="dsr-dots dsr-dots-a" aria-hidden="true"></span>
           <span class="dsr-seam" aria-hidden="true"></span>
@@ -170,9 +165,8 @@
                 <p class="ct-panel" role="tabpanel" id="c1p3" aria-labelledby="c1t3">92.4% forecast accuracy at the SKU level cut stockouts by 18% and flagged 6 SKUs whose demand pattern had shifted enough to break the naive model — caught before they ran out.</p>
               </div>
               <p class="case-links mono">
-                <a href="assets/case-study-01-retail-demand-forecasting.pdf"><span class="ar">↗</span>Case study PDF</a>
+                <a href="#flagship"><span class="ar">↗</span>Open dashboard</a>
                 <a href="assets/case-study-01-workbook.xlsx"><span class="ar">↗</span>Excel workbook</a>
-                <a href="#flagship"><span class="ar">↗</span>Live dashboard</a>
               </p>
             </div>
           </div>
@@ -207,7 +201,7 @@
                 <p class="ct-panel" role="tabpanel" id="c2p3" aria-labelledby="c2t3">31% of eventual churners were flagged at least 60 days before cancelling. Acting on the top-risk tier projected an 8% retention lift against a holdout group.</p>
               </div>
               <p class="case-links mono">
-                <a href="assets/case-study-02-churn-early-warning.pdf"><span class="ar">↗</span>Case study PDF</a>
+                <a href="assets/case-study-02-churn-early-warning.pdf"><span class="ar">↗</span>Open dashboard</a>
                 <a href="assets/case-study-02-notebook.pdf"><span class="ar">↗</span>Model notebook</a>
               </p>
             </div>
@@ -243,7 +237,7 @@
                 <p class="ct-panel" role="tabpanel" id="c3p3" aria-labelledby="c3t3">Reconciling the numbers gave 4.2x clearer visibility into spend-to-revenue, and reallocating budget away from an over-credited channel toward two under-credited ones.</p>
               </div>
               <p class="case-links mono">
-                <a href="assets/case-study-03-marketing-attribution.pdf"><span class="ar">↗</span>Case study PDF</a>
+                <a href="assets/case-study-03-marketing-attribution.pdf"><span class="ar">↗</span>Open dashboard</a>
                 <a href="assets/case-study-03-power-bi-file.pbix"><span class="ar">↗</span>Power BI file</a>
               </p>
             </div>
@@ -279,7 +273,7 @@
                 <p class="ct-panel" role="tabpanel" id="c4p3" aria-labelledby="c4t3">SLA traceability reached 97%, and standardizing the triage queue cut average time-to-first-response by 41%.</p>
               </div>
               <p class="case-links mono">
-                <a href="assets/case-study-04-support-ticket-sla.pdf"><span class="ar">↗</span>Case study PDF</a>
+                <a href="assets/case-study-04-support-ticket-sla.pdf"><span class="ar">↗</span>Open dashboard</a>
                 <a href="assets/case-study-04-workbook.xlsx"><span class="ar">↗</span>Excel workbook</a>
               </p>
             </div>
@@ -315,7 +309,7 @@
                 <p class="ct-panel" role="tabpanel" id="c5p3" aria-labelledby="c5t3">The winning variant held a 4.2% conversion lift after two weeks with no guardrail regression — validated before shipping to 100% of traffic.</p>
               </div>
               <p class="case-links mono">
-                <a href="assets/case-study-05-checkout-funnel.pdf"><span class="ar">↗</span>Case study PDF</a>
+                <a href="assets/case-study-05-checkout-funnel.pdf"><span class="ar">↗</span>Open dashboard</a>
                 <a href="assets/case-study-05-notebook.pdf"><span class="ar">↗</span>Notebook</a>
               </p>
             </div>
@@ -384,7 +378,7 @@
             <p class="mono cred-meta">GOOGLE · 2025</p>
             <h3>Data Analytics — Professional Certificate</h3>
             <p>Data cleaning, exploratory analysis, visualization, and presenting actionable insight in R and Tableau.</p>
-            <a href="assets/certificate-google-data-analytics.pdf" class="mono cred-link">VIEW PDF ↗</a>
+            <a href="assets/certificate-google-data-analytics.pdf" class="mono cred-link">OPEN DASHBOARD ↗</a>
           </article>
           </div>
           <div class="carousel-page">
@@ -396,7 +390,7 @@
             <p class="mono cred-meta">MICROSOFT · 2025</p>
             <h3>Power BI Data Analyst — Professional Certificate</h3>
             <p>Data modeling, DAX measures, star schemas, and dashboard delivery with Power BI.</p>
-            <a href="assets/certificate-microsoft-power-bi.pdf" class="mono cred-link">VIEW PDF ↗</a>
+            <a href="assets/certificate-microsoft-power-bi.pdf" class="mono cred-link">OPEN DASHBOARD ↗</a>
           </article>
           </div>
           <div class="carousel-page">
@@ -408,7 +402,7 @@
             <p class="mono cred-meta">DATACAMP · 2024</p>
             <h3>SQL for Data Science — Track Certificate</h3>
             <p>Querying, joins, window functions and query optimization across relational databases.</p>
-            <a href="assets/certificate-datacamp-sql.pdf" class="mono cred-link">VIEW PDF ↗</a>
+            <a href="assets/certificate-datacamp-sql.pdf" class="mono cred-link">OPEN DASHBOARD ↗</a>
           </article>
           </div>
         </div>
@@ -549,6 +543,11 @@
 <div class="lightbox" id="dashboardLightbox">
   <div class="lightbox-stage" id="lightboxStage"></div>
   <button class="lightbox-close mono" id="lightboxClose">CLOSE ✕</button>
+</div>
+
+<div class="lightbox" id="cardLightbox">
+  <div class="lightbox-stage lightbox-stage-card" id="cardLightboxStage"></div>
+  <button class="lightbox-close mono" id="cardLightboxClose">CLOSE ✕</button>
 </div>
 
 <div class="skill-bubble-backdrop" id="skillBubbleBackdrop"></div>

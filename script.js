@@ -269,6 +269,38 @@ if (credCarousel) {
   startAutoplay();
 }
 
+// Case studies: clicking a card (not its own link) expands a bigger showcase
+// clone of it, so the carousel itself is never touched/reflowed underneath.
+// Runs after the carousel setup above so the cloned loop-page is covered too.
+const cardLightbox = document.getElementById('cardLightbox');
+const cardLightboxStage = document.getElementById('cardLightboxStage');
+const cardLightboxClose = document.getElementById('cardLightboxClose');
+
+function openCardShowcase(card) {
+  cardLightboxStage.innerHTML = '';
+  cardLightboxStage.appendChild(card.cloneNode(true));
+  cardLightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  window.cursorPulseWorking(240);
+}
+function closeCardShowcase() {
+  cardLightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+if (cardLightbox) {
+  document.querySelectorAll('#credCarousel .cred-card').forEach((card) => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('.cred-link')) return; // let the button navigate normally
+      openCardShowcase(card);
+    });
+  });
+  cardLightboxClose.addEventListener('click', closeCardShowcase);
+  cardLightbox.addEventListener('click', (e) => { if (e.target === cardLightbox) closeCardShowcase(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && cardLightbox.classList.contains('open')) closeCardShowcase();
+  });
+}
+
 // Skills marquee: click a title for the detail behind it, in a small bubble
 const skillGroups = {
   'Technical Skills': {
