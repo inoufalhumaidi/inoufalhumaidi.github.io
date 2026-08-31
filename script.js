@@ -46,6 +46,33 @@ onScroll();
 
 toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
+// Full-screen menu overlay: toggled from the header's box-notation button
+const menuToggle = document.getElementById('menuToggle');
+const menuOverlay = document.getElementById('menuOverlay');
+if (menuToggle && menuOverlay) {
+  function openMenu() {
+    menuOverlay.classList.add('open');
+    menuToggle.classList.add('active');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    menuToggle.querySelector('span').textContent = 'CLOSE';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    menuOverlay.classList.remove('open');
+    menuToggle.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.querySelector('span').textContent = 'MENU';
+    document.body.style.overflow = '';
+  }
+  menuToggle.addEventListener('click', () => {
+    menuOverlay.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  menuOverlay.querySelectorAll('.menu-list a').forEach((a) => a.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menuOverlay.classList.contains('open')) closeMenu();
+  });
+}
+
 // Nav active-section tracking: brackets the header link for whichever
 // section is currently crossing the reading line, moving as you scroll
 const navLinks = [...document.querySelectorAll('.topnav a[href^="#"]')];

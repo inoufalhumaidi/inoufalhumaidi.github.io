@@ -23,16 +23,39 @@
   <div class="shell">
     <a href="#top" class="id mono">NOUF ALHUMAIDI <span>/ ANALYST</span></a>
     <nav class="mono topnav" id="topnav">
-      <a href="#skills">SKILLS</a>
       <a href="#work">WORK</a>
-      <a href="#case-studies">CASE STUDIES</a>
       <a href="#experience">EXPERIENCE</a>
       <a href="#credentials">CREDENTIALS</a>
       <a href="#contact">CONTACT</a>
+      <a href="assets/cv.pdf" download>DOWNLOAD CV</a>
     </nav>
-    <a href="assets/cv.pdf" download class="index-btn mono">DOWNLOAD CV</a>
+    <button class="index-btn mono" id="menuToggle" aria-expanded="false" aria-controls="menuOverlay">
+      <i class="ibx tl" aria-hidden="true"></i><i class="ibx tr" aria-hidden="true"></i><i class="ibx bl" aria-hidden="true"></i><i class="ibx br" aria-hidden="true"></i>
+      <span>MENU</span>
+    </button>
   </div>
 </header>
+
+<div class="menu-overlay" id="menuOverlay">
+  <div class="shell">
+    <nav class="menu-list mono">
+      <a href="#top" data-idx="00"><span class="mi">00</span>Home</a>
+      <a href="#skills" data-idx="01"><span class="mi">01</span>Skills</a>
+      <a href="#work" data-idx="02"><span class="mi">02</span>Selected work</a>
+      <a href="#flagship" data-idx="03"><span class="mi">03</span>Flagship</a>
+      <a href="#case-studies" data-idx="04"><span class="mi">04</span>Case studies</a>
+      <a href="#experience" data-idx="05"><span class="mi">05</span>Experience</a>
+      <a href="#volunteering" class="sub" data-idx="05a"><span class="mi">·</span>Volunteering</a>
+      <a href="#credentials" data-idx="06"><span class="mi">06</span>Credentials</a>
+      <a href="#edu" class="sub" data-idx="06a"><span class="mi">·</span>Education</a>
+      <a href="#prof-certs" class="sub" data-idx="06b"><span class="mi">·</span>Professional certificates</a>
+      <a href="#courses-bootcamps" class="sub" data-idx="06c"><span class="mi">·</span>Courses &amp; bootcamps</a>
+      <a href="#honors-awards" class="sub" data-idx="06d"><span class="mi">·</span>Honors &amp; awards</a>
+      <a href="#contact" data-idx="07"><span class="mi">07</span>Contact</a>
+      <a href="assets/cv.pdf" download data-idx="08"><span class="mi">08</span>Download CV <span class="ar">↗</span></a>
+    </nav>
+  </div>
+</div>
 
 <main id="top">
 
@@ -461,7 +484,7 @@
         </article>
       </div>
 
-      <div class="cred-text cred-text-sub">
+      <div class="cred-text cred-text-sub" id="volunteering">
         <p class="mono cred-text-line reveal">
           <span class="ctl-label">VOLUNTEERING</span>
           <span class="ctl-body"><b>Data Volunteer</b> — Local Nonprofit (2022–Present) · <b>Mentor</b> — Coding Bootcamp Alumni Network (2021–2022)</span>
@@ -475,7 +498,7 @@
       <div class="sec-head mono reveal"><h2 class="sk">Credentials</h2><span>Summary</span></div>
 
       <div class="xrows">
-        <article class="xrow reveal">
+        <article class="xrow reveal" id="edu">
           <div class="xr-when mono">
             <span>EDUCATION</span>
             <span class="bar" style="--fill:100%"></span>
@@ -486,7 +509,7 @@
             <a href="assets/credential-education-transcript.pdf" class="mono ctl-view">VIEW ↗</a>
           </div>
         </article>
-        <article class="xrow reveal">
+        <article class="xrow reveal" id="prof-certs">
           <div class="xr-when mono">
             <span>PROFESSIONAL CERTIFICATES</span>
             <span class="bar" style="--fill:100%"></span>
@@ -497,7 +520,7 @@
             <a href="#case-studies" class="mono ctl-view">VIEW ↗</a>
           </div>
         </article>
-        <article class="xrow reveal">
+        <article class="xrow reveal" id="courses-bootcamps">
           <div class="xr-when mono">
             <span>COURSES &amp; BOOTCAMPS</span>
             <span class="bar" style="--fill:100%"></span>
@@ -508,7 +531,7 @@
             <a href="assets/credential-courses-bootcamps.pdf" class="mono ctl-view">VIEW ↗</a>
           </div>
         </article>
-        <article class="xrow reveal">
+        <article class="xrow reveal" id="honors-awards">
           <div class="xr-when mono">
             <span>HONORS &amp; AWARDS</span>
             <span class="bar" style="--fill:100%"></span>
