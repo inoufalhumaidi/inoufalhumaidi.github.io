@@ -12,6 +12,7 @@
   --accent-2: #a6d8d0;
   --accent-2-deep: #4f9c8c; /* same shade as the hero eyebrow, for text that reads too pale in the light --accent-2 */
   --accent-3: #b9c6f2;
+  --accent-3-deep: #6270c4; /* same relationship to --accent-3 as --accent-2-deep has to --accent-2 */
   --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
   --display: 'Chivo', 'Inter', system-ui, sans-serif;
   --body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -297,6 +298,7 @@ a { color: inherit; text-decoration: none; }
 
 .mq-label { font-weight: 700; letter-spacing: .1em; color: var(--accent); }
 .mq-label.accent2 { color: var(--accent-2-deep); }
+.mq-label.accent3 { color: var(--accent-3-deep); }
 .mq-sep { color: var(--faint); }
 .mq-skill {
   font: inherit; font-family: var(--mono); background: none; border: 0; padding: 0; cursor: pointer;
@@ -603,8 +605,9 @@ a { color: inherit; text-decoration: none; }
 }
 .bubble-close:hover { color: var(--accent); }
 .bubble-kicker { font-size: 10px; letter-spacing: .12em; color: var(--accent-2-deep); margin: 0 0 8px; padding-right: 20px; }
-/* match each group's colour in the marquee (pink for technical, teal for professional) */
+/* match each group's colour in the marquee (pink for technical, teal for professional, blue for behavioural) */
 .bubble-kicker.technical { color: var(--accent); }
+.bubble-kicker.behavioural { color: var(--accent-3-deep); }
 .skill-bubble h4 { font-family: var(--display); font-size: 1.05rem; margin: 0 0 12px; padding-right: 20px; }
 .skill-bubble ul { margin: 0; padding-left: 18px; }
 .skill-bubble li { font-size: 12.5px; line-height: 1.6; color: var(--muted); }

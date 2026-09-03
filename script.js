@@ -372,28 +372,51 @@ if (cardLightbox) {
 // Skills marquee: click a title for the detail behind it, in a small bubble
 const skillGroups = {
   'Technical Skills': {
-    'Engineering & Control Systems': [
-      'Control Systems',
-      { name: 'PID Autopilot Development', children: ['Tuning', 'Implementation', 'Testing'] },
-      'Feedback Loops', 'Stability', 'Transfer Functions',
-      'Embedded Control Algorithms', 'Sensor & Actuator Integration', 'Power Systems & Wiring',
+    'Advanced Analytics': [
+      { name: 'Query & Data Analytics Languages', children: ['SQL', 'Power Query (M)', 'KQL', 'DAX', 'Python', 'R'] },
+      { name: 'BI & Data Visualisation Software', children: ['Power BI', 'Tableau', 'Microsoft Excel'] },
     ],
-    'Embedded Systems & Hardware': ['C++ [Arduino]', 'Embedded Hardware', 'Arduino', 'ESCs', 'SBCs'],
-    'Programming & Data': ['Python', 'SQL', 'Power BI', 'DAX', 'Power Query', 'Excel', 'Tableau'],
-    'CAD & Design': ['SolidWorks', 'Adobe Illustrator', 'Canva'],
+    'Embedded & Autonomous (GNC) Systems Engineering': [
+      { name: 'Hardware & Prototyping', children: ['MCUs (Arduino Uno, ESP32)', 'MPUs / SBCs (Raspberry Pi 4B / 5)', 'Peripherals (Sensors, Actuators & Indicators, Power Actuators / Motor Drivers)'] },
+      { name: 'System Modelling & Analysis', children: ['State Space Representation', 'Transfer Functions', 'Bode Plots', 'Root Locus'] },
+      { name: 'Guidance Logic', children: ['Trajectory / Path Planning Algorithms', 'Model Predictive Control (MPC) / Receding Horizon Guidance', 'Waypoint & Constrained Guidance'] },
+      { name: 'Navigation Logic', children: ['Sensor Fusion (Kalman Filtering)', 'Dead Reckoning', 'Fault Detection and Isolation (FDI)'] },
+      { name: 'Control Logic', children: ['PID Control', 'Cascaded Loops', 'Feedforward Compensation'] },
+      { name: 'System Architecture', children: ['Time Triggered Architecture (TTA)', 'RTOS Based Architecture'] },
+      { name: 'System Implementation & Testing', children: ['Software in the Loop (SIL) Prototyping', 'Hardware in the Loop (HIL) Rigs'] },
+      { name: 'Mechanical Design Software', children: ['SolidWorks', 'SimScale'] },
+      { name: 'Simulation Software', children: ['Proteus', 'MATLAB and Simulink'] },
+    ],
+    'Experimental R&D': [
+      { name: 'Device Fabrication & Nanotechnology', children: ['Substrate Preparation & Chemical Etching', 'Transport Layer Deposition', 'Perovskite Crystal Engineering', 'Vacuum & Vapor Deposition'] },
+      { name: 'Controlled Environment Processing', children: ['Spin Coating Optimisation', 'UV Ozone Substrate Cleaning', 'Nitrogen Glovebox Operations'] },
+      { name: 'Metrology & Characterisation', children: ['Structural & Morphological Analysis', 'Photovoltaic & Electrical Evaluation', 'Optoelectronic Testing'] },
+    ],
+    'Quality Engineering & Continuous Improvement': [
+      { name: 'Process Improvement Methodologies', children: ['Lean', 'Six Sigma (DMAIC)', 'Lean Six Sigma'] },
+      { name: 'Continuous Improvement Tools', children: ['Risk & Root Cause Analysis (FMEA, Fishbone, 5 Whys, RCA)', 'Statistical Process Control (SPC)', 'Measurement Quality Assurance (MQA)'] },
+    ],
   },
   'Professional Skills': {
-    'Project Management': [
-      'Scope Management', 'Schedule Management', 'Cost Management', 'Resource Management',
-      'Risk Management', 'Quality Management', 'Procurement Management',
-      'Stakeholder Engagement', 'Communication Management',
+    'Project Management Approaches & Competencies': [
+      { name: 'Development Approaches', children: ['Predictive Methodologies', 'Hybrid Methodologies', 'Adaptive / Agile Methodologies'] },
+      { name: 'Core Competencies', children: ['Scope Management', 'Schedule Management', 'Cost Management', 'Quality Management', 'Resource Management', 'Communication Management', 'Risk Management', 'Procurement Management', 'Contract & Vendor Management', 'Project Integration Management', 'Stakeholder Engagement Management'] },
     ],
-    'Project Methodologies': ['Predictive / Waterfall', 'Agile', 'Scrum', 'Hybrid'],
-    'Business & Systems': ['Business Analysis', 'Systems Engineering Process', 'Integration Management', 'PMBOK-based Processes'],
+    'Systems Engineering Processes': [
+      'Lifecycles (V Model)',
+      'Quality to Cost Balance Methodologies: VE, CBA',
+    ],
+    'Product Strategy & Continuity': ['Product Thinking', 'Strategic Scope Definition', 'Technical Continuity Enforcement'],
     'Work Management Tools': ['Jira', 'Asana'],
-    'Communication & Product': ['Presentation & Communication', 'Storytelling', 'Product Thinking', 'Time Management'],
+  },
+  'Behavioural Skills': {
+    'Communication Architecture': ['Data Storytelling', 'Stakeholder Technical Presentations', 'Cross Functional Reporting'],
+    'Critical Thinking & Problem Solving': ['Risk & Root Cause Analysis', 'Complex Logic Processing', 'Structural Crisis Management & Recovery'],
+    'Leadership & Adaptability': ['Influence Without Authority', 'Adaptive Leadership', 'Conflict Resolution', 'Strategic Consensus Building', 'Rapid Multi Disciplinary Adaptability', 'Time & Prioritisation Management'],
+    'Teamwork & Professionalism': ['Dynamic Teamwork Collaboration', 'Professionalism & Workplace Ethics'],
   },
 };
+const SKILL_GROUP_CLASS = { 'Technical Skills': 'technical', 'Behavioural Skills': 'behavioural' };
 
 const skillButtons = document.querySelectorAll('.mq-skill');
 if (skillButtons.length) {
@@ -425,7 +448,9 @@ if (skillButtons.length) {
     if (!data) return;
     skillButtons.forEach((b) => b.classList.toggle('active', b.dataset.skill === btn.dataset.skill));
     bubbleKicker.textContent = data.group.toUpperCase();
-    bubbleKicker.classList.toggle('technical', data.group === 'Technical Skills');
+    bubbleKicker.classList.remove('technical', 'behavioural');
+    const groupClass = SKILL_GROUP_CLASS[data.group];
+    if (groupClass) bubbleKicker.classList.add(groupClass);
     bubbleTitle.textContent = btn.dataset.skill;
     bubbleList.innerHTML = renderItems(data.items);
     bubbleBackdrop.classList.add('open');
